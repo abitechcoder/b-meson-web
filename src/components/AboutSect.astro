@@ -1,0 +1,27 @@
+---
+import Button from "./ui/Button.astro";
+---
+
+<section class="bg-primary py-10 lg:py-20 text-white font-poppins">
+  <div class="container mx-auto px-4 lg:px-0">
+    <div class="flex flex-col lg:grid lg:grid-cols-[300px_1fr] gap-4 lg:gap-8">
+      <div>
+        <h1 class="font-bold text-3xl lg:text-5xl">About Cepticon</h1>
+      </div>
+      <div class="flex flex-col gap-4 items-start">
+        <p class="text-base lg:text-lg leading-8">
+          Established in 2009, <span class="font-bold">CEPTICON LIMITED</span> is
+          a diversified company that provides Engineering, Procurement and Construction
+          (EPC) services, Dredging & Marine Logistics support services in the oil
+          and gas industry, manufacturing & other sectors alike in West Africa.
+        </p>
+        <Button variant="secondary" href="/about">Learn more</Button>
+      </div>
+    </div>
+    <img
+      src="/src/assets/images/img011.jpeg"
+      alt="Image of a Cepticon engineer working on steel"
+      class="h-[300px] lg:h-[450px] w-full object-cover object-top mt-10 rounded-lg"
+    />
+  </div>
+</section>

@@ -1,0 +1,209 @@
+---
+import { Icon } from "astro-icon/components";
+import RootLayout from "../layouts/RootLayout.astro";
+import SectionHeader from "../components/ui/SectionHeader.astro";
+import Partners from "../components/Partners.astro";
+import ContactUsBanner from "../components/ContactUsBanner.astro";
+import HeaderBanner from "../components/HeaderBanner.astro";
+---
+
+<RootLayout title="About Us">
+  <HeaderBanner route="About Us" />
+  <section class="container mx-auto px-4 py-12">
+    <!-- Introduction Section -->
+    <section class="mb-12">
+      <SectionHeader text="About Us" title="Who we are" />
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="flex flex-col gap-4">
+          <p class="leading-loose text-base text-justify">
+            Established in 2009, Cepticon Limited is a diversified company
+            providing Engineering, Procurement, Construction (EPC), and Marine
+            Logistics services in the oil and gas industry. Our commitment to
+            operational quality, safety, and environmental stewardship sets us
+            apart as a leader in the field.
+          </p>
+          <p class="leading-loose text-base text-justify">
+            Founded on the principles of operational quality, safety and
+            protection of the environment, we strive to provide our Client's
+            with a highly responsive service focused on innovative technology,
+            modern, efficient equipment and dedicated and highly trained
+            professionals. With its diversified interests CEPTICON LIMITED uses
+            its assets and experienced personnel to provide its Client’s with
+            the highest level of service they deserve. As an innovative company
+            we are constantly expanding and improving the services we provide
+            both within and beyond our core businesses. We are also accomplished
+            at partnering with other companies around the world with greater
+            reach and resources at their disposal to achieve our clients’
+            objectives.
+          </p>
+        </div>
+        <img src="/src/assets/images/img008.jpeg" alt="Cepticon engineers" />
+      </div>
+    </section>
+
+    <!-- Mission, Vision, Values Section -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+      <div
+        class="bg-white shadow-lg p-6 rounded-lg grid place-items-center gap-3 border border-blue-300"
+      >
+        <div class="bg-primary p-4 rounded-full">
+          <Icon name={"vision"} size={30} class="text-yellow-500" />
+        </div>
+        <h4 class="text-xl font-bold font-poppins text-primary">Our Vision</h4>
+        <p class="text-center">
+          To provide first-class services with unmatched efficiency, safety, and
+          environmental responsibility.
+        </p>
+      </div>
+      <div
+        class="bg-white shadow-lg p-6 rounded-lg grid place-items-center gap-3 border border-blue-300"
+      >
+        <div class="bg-primary p-4 rounded-full">
+          <Icon name={"mission"} size={30} class="text-yellow-500" />
+        </div>
+        <h4 class="text-xl font-bold font-poppins text-primary">Our Mission</h4>
+        <p class="text-center">
+          To deliver excellence in service, leveraging innovative technology and
+          a highly skilled workforce.
+        </p>
+      </div>
+      <div
+        class="bg-white shadow-lg p-6 rounded-lg grid place-items-center gap-3 border border-blue-300"
+      >
+        <div class="bg-primary p-4 rounded-full">
+          <Icon name={"value"} size={30} class="text-yellow-500" />
+        </div>
+        <h4 class="text-xl font-bold font-poppins text-primary">
+          Our Core Values
+        </h4>
+        <ul class="list-disc ml-4">
+          <li>Civic Responsibility</li>
+          <li>Integrity and Respect</li>
+          <li>Operational Excellence</li>
+          <li>Employee Empowerment</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="mb-12">
+      <SectionHeader text="team" title="Meet our team" />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-white shadow-lg rounded-lg relative">
+          <img
+            src="/src/assets/images/profile1.jpg"
+            alt="Team Member"
+            class="w-full h-[350px] object-cover object-center"
+          />
+          <div
+            class="absolute bottom-4 left-4 right-4 text-base rounded-lg p-4 text-center bg-white font-poppins"
+          >
+            <h4 class="font-bold text-primary">Daerego Ben-Whyte</h4>
+            <p class="text-black font-bold">Managing Director</p>
+          </div>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg relative">
+          <img
+            src="/src/assets/images/profile2.jpg"
+            alt="Team Member"
+            class="w-full h-[350px] object-cover object-center"
+          />
+          <div
+            class="absolute bottom-4 left-4 right-4 text-base rounded-lg p-4 text-center bg-white font-poppins"
+          >
+            <h4 class="font-bold text-primary">Williams Itua</h4>
+            <p class="text-black font-bold">Director / B. Dev</p>
+          </div>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg relative">
+          <img
+            src="/src/assets/images/profile3.jpg"
+            alt="Team Member"
+            class="w-full h-[350px] object-cover object-center"
+          />
+          <div
+            class="absolute bottom-4 left-4 right-4 text-base rounded-lg p-4 text-center bg-white font-poppins"
+          >
+            <h4 class="font-bold text-primary">Worluchem David</h4>
+            <p class="text-black font-bold">Admin Manager</p>
+          </div>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg relative">
+          <img
+            src="/src/assets/images/profile4.jpg"
+            alt="Team Member"
+            class="w-full h-[350px] object-cover object-center"
+          />
+          <div
+            class="absolute bottom-4 left-4 right-4 text-base rounded-lg p-4 text-center bg-white/80 font-poppins"
+          >
+            <h4 class="font-bold text-primary">Godwin Ogens</h4>
+            <p class="text-black font-bold">Account Officer</p>
+          </div>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-lg relative">
+          <img
+            src="/src/assets/images/profile5.jpg"
+            alt="Team Member"
+            class="w-full h-[350px] object-cover object-center"
+          />
+          <div
+            class="absolute bottom-4 left-4 right-4 text-base rounded-lg p-4 text-center bg-white font-poppins"
+          >
+            <h4 class="font-bold text-primary">Inengi Daere</h4>
+            <p class="text-black font-bold">QHSE Coordinator</p>
+          </div>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg relative">
+          <img
+            src="/src/assets/images/profile6.jpg"
+            alt="Team Member"
+            class="w-full h-[350px] object-cover object-center"
+          />
+          <div
+            class="absolute bottom-4 left-4 right-4 text-base rounded-lg p-4 text-center bg-white font-poppins"
+          >
+            <h4 class="font-bold text-primary">Ogbonna Chinwendu</h4>
+            <p class="text-black font-bold">CONTRACTS Coordinator</p>
+          </div>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg relative">
+          <img
+            src="/src/assets/images/profile1.jpg"
+            alt="Team Member"
+            class="w-full h-[350px] object-cover object-center"
+          />
+          <div
+            class="absolute bottom-4 left-4 right-4 text-base rounded-lg p-4 text-center bg-white font-poppins"
+          >
+            <h4 class="font-bold text-primary">Okolo Vincent</h4>
+            <p class="text-black font-bold">Tech Manager</p>
+          </div>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg relative">
+          <img
+            src="/src/assets/images/profile6.jpg"
+            alt="Team Member"
+            class="w-full h-[350px] object-cover object-center"
+          />
+          <div
+            class="absolute bottom-4 left-4 right-4 text-base rounded-lg p-4 text-center bg-white font-poppins"
+          >
+            <h4 class="font-bold text-primary">Lilly-Tariah Prebo</h4>
+            <p class="text-black font-bold">Operations Manager</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- Partners Section -->
+  <Partners />
+
+  <!-- Call-to-Action Section -->
+  <ContactUsBanner
+    title="Want to Know More?"
+    text="Reach out to us today for more information about our services and expertise."
+  />
+</RootLayout>

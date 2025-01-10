@@ -1,0 +1,18 @@
+---
+import ContactUsBanner from "../components/ContactUsBanner.astro";
+import HeaderBanner from "../components/HeaderBanner.astro";
+import OurServices from "../components/OurServices.astro";
+import Partners from "../components/Partners.astro";
+import SectionHeader from "../components/ui/SectionHeader.astro";
+import RootLayout from "../layouts/RootLayout.astro";
+---
+
+<RootLayout title="Our Services">
+  <HeaderBanner route="Our Services" />
+  <section class="container mx-auto px-4 lg:px-0 py-10 lg:py-20">
+    <SectionHeader text="Services" title="What we do"/>
+    <OurServices/>
+  </section>
+  <Partners/>
+  <ContactUsBanner title="Ready to Get Started?" text="Let’s work together to elevate your business. Contact us for customized solutions tailored to your needs."/>
+</RootLayout>

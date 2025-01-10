@@ -1,0 +1,25 @@
+---
+interface Props {
+  route: string;
+}
+
+const { route } = Astro.props;
+---
+
+<div
+  class="relative bg-[url('/src/assets/images/bg2.jpg')] bg-cover bg-center h-[300px] before:absolute before:inset-0 before:bg-black/80"
+>
+  <div
+    class="absolute z-10 top-0 left-0 h-full w-full flex flex-col gap-2 justify-center py-8"
+  >
+    <h2
+      class="text-3xl lg:text-4xl font-bold text-white font-poppins container mx-auto px-4"
+    >
+      {route}
+    </h2>
+    <p class="container mx-auto px-4 font-inter font-light text-white">
+      Home <span class="px-2">></span>
+      <span class="text-yellow-500 font-bold">{route}</span>
+    </p>
+  </div>
+</div>

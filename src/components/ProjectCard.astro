@@ -1,0 +1,26 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  title: string;
+  link?: string;
+  image: string;
+}
+
+const { title, link, image } = Astro.props;
+---
+
+<div class="relative rounded-lg h-[300px]">
+  <img
+    src={image}
+    alt="project background image"
+    class="absolute top-0 left-0 h-full w-full rounded-lg object-cover object-center"
+  />
+  <div
+    class="rounded-lg absolute bottom-0 left-0 w-full p-6 h-full flex flex-col justify-end bg-gradient-to-t from-black hover:cursor-pointer hover:from-primary z-10"
+  >
+    <h5 class="text-yellow-300 font-bold font-inter text-lg lg:ext-xl">
+      {title}
+    </h5>
+  </div>
+</div>

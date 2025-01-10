@@ -1,0 +1,56 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+---
+
+<section class="bg-white py-20 px-4">
+  <div class="container mx-auto space-y-8">
+    <div class="px-4 flex flex-col items-center gap-4">
+      <div
+        class="bg-orange-100 text-orange-500 font-bold px-4 py-2 text-sm font-poppins rounded-full w-[100px] text-center"
+      >
+        PROJECTS
+      </div>
+      <h2 class="text-primary font-bold text-xl lg:text-4xl font-poppins text-center">
+        Explore some of Our Projects
+      </h2>
+      <p class="w-full lg:w-3/5 mx-auto text-center text-gray-500">
+        We are a diversified company that provides Engineering, Procurement and
+        Construction (EPC) services, Dredging & Marine Logistics support
+        services to the oil and gas industry, manufacturing and other sectors.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <ProjectCard
+        image="/src/assets/images/enito3.png"
+        title="Completion of 500m Asphalt Road at Enito 2 Community"
+        link="/"
+      />
+      <ProjectCard
+        image="/src/assets/images/AKRI_School_2.png"
+        title="Rehabilitation of AKRI Six Classroom Blocks"
+        link="/"
+      />
+      <ProjectCard
+        image="/src/assets/images/AKRI_Health_2.png"
+        title="Rehabilitation of AKRI Health Centre Facilities"
+        link="/"
+      />
+      <ProjectCard
+        image="/src/assets/images/Samabri_Cluster_1.png"
+        title="Revamping of Fire Fighting Facilities at Samabri Cluster"
+        link="/"
+      />
+      <ProjectCard
+        image="/src/assets/images/caravan3.png"
+        title="Procurement & Installation of 6NO Caravan at Idu Flow Station"
+        link="/"
+      />
+      <ProjectCard
+        image="/src/assets/images/oguta5.png"
+        title="Electrification of Oguta Community"
+        link="/"
+      />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,66 @@
+---
+import RootLayout from "../layouts/RootLayout.astro";
+---
+
+<RootLayout title="Contact Us">
+  <section class="container mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold text-center mb-8">Contact Us</h2>
+
+    <!-- Contact Information -->
+    <section class="mb-12 text-center">
+      <p>
+        Address: No 5 Eligbam Street, Off Rumuola Road, Port Harcourt, Rivers
+        State, Nigeria
+      </p>
+      <p>
+        Email: <a
+          href="mailto:info@cepticon.net"
+          class="text-blue-500 hover:underline">info@cepticon.net</a
+        >
+      </p>
+      <p>Phone: +084 331672 | +234 803 704 7365</p>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="bg-white shadow-lg p-6 rounded-lg max-w-lg mx-auto">
+      <form action="https://formspree.io/f/{your_form_id}" method="POST">
+        <div class="mb-4">
+          <label for="name" class="block font-bold text-blue-900">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block font-bold text-blue-900">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label for="message" class="block font-bold text-blue-900"
+            >Message</label
+          >
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            required></textarea>
+        </div>
+        <button
+          type="submit"
+          class="bg-blue-900 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700"
+          >Send Message</button
+        >
+      </form>
+    </section>
+  </section>
+</RootLayout>

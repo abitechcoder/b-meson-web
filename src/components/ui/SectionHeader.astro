@@ -1,0 +1,19 @@
+---
+interface Props {
+  title: string;
+  text: string;
+}
+
+const { title, text } = Astro.props;
+---
+
+<div class="space-y-2 mb-8">
+  <h5
+    class="text-gray-400 font-inter uppercase text-sm font-bold after:w-[120px] after:h-[1px] after:bg-orange-500 after:content-[''] after:inline-block after:my-1 after:mx-[10px]"
+  >
+    {text}
+  </h5>
+  <h3 class="text-3xl font-poppins uppercase font-bold mb-4 text-primary">
+    {title}
+  </h3>
+</div>

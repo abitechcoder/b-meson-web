@@ -1,0 +1,44 @@
+---
+import Button from "./ui/Button.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<header class="bg-white">
+  <nav
+    class="container px-4 md:px-0 mx-auto py-4 flex justify-between items-center navbar"
+  >
+    <a href="/" class="flex items-center gap-3">
+      <img src="/src/assets/images/Logo.png" alt="Cepticon Limited Logo" />
+      <p class="text-base md:text-2xl text-primary font-anton">
+        Cepticon Limited
+      </p>
+    </a>
+    <div class="space-x-8 hidden lg:block">
+      <a href="/" class="link">Home</a>
+      <a href="/about" class="link">About Us</a>
+      <a href="/services" class="link">Services</a>
+      <a href="/projects" class="link">Projects</a>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="hidden md:block">
+        <Button variant="primary" href="/contact">Get in Touch</Button>
+      </div>
+      <Icon
+        name="mdi-light--menu"
+        size={40}
+        class="text-primary lg:hidden cursor-pointer"
+      />
+    </div>
+  </nav>
+</header>
+
+<script>
+  const nav = document.querySelector(".navbar");
+  const navLinks = nav.querySelectorAll(".link");
+  const currentURL = window.location.href;
+  navLinks.forEach((link) => {
+    if (link.href === currentURL) {
+      link.classList.add("active-link");
+    }
+  });
+</script>

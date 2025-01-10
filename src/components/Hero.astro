@@ -1,0 +1,64 @@
+---
+import Button from "./ui/Button.astro";
+---
+
+<section>
+  <section
+    class="relative bg-[url('/src/assets/images/bg1.jpg')] py-20 bg-cover bg-center before:absolute before:inset-0 before:bg-black/80"
+  >
+    <div class="container mx-auto relative z-10 space-y-8">
+      <div>
+        <h5 class="text-yellow-300 text-center font-poppins font-light mb-4">
+          Welcome to Cepticon Limited
+        </h5>
+        <h1
+          class="w-4/5 mx-auto text-2xl md:text-5xl leading-snug text-center font-bold text-white mb-4 font-poppins"
+        >
+          Your One-Stop <span class="text-orange-500">Solutions Provider</span> for
+          Engineering, Procurement, Construction and Marine Logistics
+        </h1>
+      </div>
+      <div
+        class="w-4/5 md:w-full mx-auto flex flex-col md:flex-row justify-center gap-8"
+      >
+        <Button href="/contact" variant="primary">Get in Touch</Button>
+        <Button href="/about" variant="border">About Us</Button>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-10">
+    <div
+      class="px-4 lg:px-0 container mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8"
+    >
+      <div>
+        <img
+          src="/src/assets/images/img007.jpeg"
+          alt="Image 1"
+          class="rounded-md shadow-lg h-full"
+        />
+      </div>
+      <div>
+        <img
+          src="/src/assets/images/img009.jpeg"
+          alt="Image 2"
+          class="rounded-md shadow-lg"
+        />
+      </div>
+      <div>
+        <img
+          src="/src/assets/images/img004.jpeg"
+          alt="Image 3"
+          class="rounded-md shadow-lg"
+        />
+      </div>
+      <div>
+        <img
+          src="/src/assets/images/img024.jpeg"
+          alt="Image 4"
+          class="rounded-md shadow-lg"
+        />
+      </div>
+    </div>
+  </section>
+</section>
