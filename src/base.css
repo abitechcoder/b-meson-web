@@ -4,11 +4,11 @@
 
 @layer base {
   .link {
-    @apply text-gray-700 hover:text-primary hover:font-bold font-inter;
+    @apply text-gray-700 hover:text-green-800 hover:font-bold font-inter;
   }
 
   .active-link {
-    @apply text-primary font-bold;
+    @apply text-green-800 font-bold;
   }
 
   .service-icon {

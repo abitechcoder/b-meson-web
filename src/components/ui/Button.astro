@@ -10,11 +10,12 @@ const {
 } = Astro.props;
 
 const variants = {
-  primary: "bg-primary hover:bg-orange-500 hover:cursor-pointer text-white",
+  primary: "bg-gradient-to-br from-primary to-secondary hover:from-secondary hover:to-primary text-white",
+  // primary: "bg-green-800 hover:border-secondary hover:bg-transparent hover:border-2 hover:cursor-pointer text-white hover:text-secondary",
   secondary:
-    "bg-orange-500 text-white hover:bg-white hover:cursor-pointer hover:text-orange-500 hover:font-bold",
+    "bg-secondary text-white hover:bg-white hover:cursor-pointer hover:text-orange-500 hover:font-bold",
   border:
-    "border border-orange-500 hover:border-primary hover:cursor-pointer text-orange-500 hover:text-white",
+    "border border-primary hover:border-primary hover:cursor-pointer text-secondary hover:text-white",
 };
 ---
 
