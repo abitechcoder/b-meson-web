@@ -4,24 +4,38 @@ import Button from "./ui/Button.astro";
 
 <section class="bg-primary py-10 lg:py-20 text-white font-poppins">
   <div class="container mx-auto px-4 lg:px-0">
-    <div class="flex flex-col lg:grid lg:grid-cols-[300px_1fr] gap-4 lg:gap-8">
-      <div>
-        <h1 class="font-bold text-3xl lg:text-5xl">About Cepticon</h1>
+    <div class="flex flex-col lg:grid lg:grid-cols-[400px_1fr] gap-4 lg:gap-8">
+      <div class="flex flex-col gap-8 items-start">
+        <h1 class="font-bold text-3xl lg:text-4xl flex flex-col gap-2">
+          About <span class="block">B-MESON Limited</span>
+        </h1>
+        <Button variant="secondary" href="/about">Learn more</Button>
       </div>
       <div class="flex flex-col gap-4 items-start">
-        <p class="text-base lg:text-lg leading-8">
-          Established in 2009, <span class="font-bold">CEPTICON LIMITED</span> is
-          a diversified company that provides Engineering, Procurement and Construction
-          (EPC) services, Dredging & Marine Logistics support services in the oil
-          and gas industry, manufacturing & other sectors alike in West Africa.
+        <p class="text-base lg:text-lg leading-8 font-inter">
+          <span class="font-bold">B-MESON Limited</span> is a leading recruitment
+          and talent acquisition firm committed to connecting exceptional talent
+          with ambitious organizations. We specialize in delivering innovative, efficient,
+          and reliable recruitment solutions tailored to the unique needs of our
+          clients.
         </p>
-        <Button variant="secondary" href="/about">Learn more</Button>
+        <p>
+          B-MESON Limited burst onto the scene in 2022 as a real estate
+          development company with big dreams. But we quickly realized that our
+          real passion lay in connecting exceptional talent with amazing
+          opportunities.
+        </p>
+        <p>
+          So, by February 2023, we pivoted and dove headfirst into the world of
+          recruitment and talent acquisition. It was a bold move, but we were
+          confident in our ability to deliver.
+        </p>
       </div>
     </div>
     <img
-      src="/src/assets/images/img011.jpeg"
-      alt="Image of a Cepticon engineer working on steel"
-      class="h-[300px] lg:h-[450px] w-full object-cover object-top mt-10 rounded-lg"
+      src="/src/assets/images/office.jpg"
+      alt="Image of a staffs having a meeting"
+      class="h-[300px] lg:h-[450px] w-full object-cover object-bottom mt-10 rounded-lg"
     />
   </div>
 </section>

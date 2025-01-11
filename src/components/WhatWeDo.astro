@@ -1,41 +1,5 @@
 ---
-import { Icon } from "astro-icon/components";
-import WhatWeDoCard from "./WhatWeDoCard.astro";
 import Button from "./ui/Button.astro";
-
-
-const services = [
-  {
-    id: 1,
-    title: "Pipeline Maintenance/Pigging",
-    description: "We ensure optimal flow in pipelines through cleaning and inspection using advanced pigging technologies to prevent blockages and maintain system integrity."
-  },
-  {
-    id: 2,
-    title: "Corrosion Control/Non-Destructive Testing (NDT)",
-    description: "We offer services like ultrasonic testing, magnetic particle inspection, and dye penetrant testing to detect material defects and prevent corrosion, ensuring asset longevity and compliance."
-  },
-  {
-    id: 3,
-    title: "Topside Maintenance",
-    description: "We focus on maintaining the structural and operational integrity of offshore platform topsides, including mechanical, electrical, and surface protection systems."
-  },
-  {
-    id: 4,
-    title: "Wellhead Maintenance/Installation",
-    description: "We setup and service wellhead to ensure safe and efficient oil and gas extraction processes."
-  },
-  {
-    id: 5,
-    title: "Crane Inspection Service",
-    description: "We conduct comprehensive inspections and certifications of cranes to ensure safety and compliance with operational standards."
-  },
-  {
-    id: 6,
-    title: "Civil Construction",
-    description: "We provide infrastructure development, including roads, buildings, and structural facilities, tailored to the needs of industrial and community projects."
-  },
-];
 ---
 
 <section class="bg-white py-20 px-4">
@@ -46,26 +10,15 @@ const services = [
       >
         SERVICES
       </div>
-      <h2 class="text-primary font-bold text-xl lg:text-4xl font-poppins">What We Do</h2>
-      <p class="w-full lg:w-3/5 mx-auto text-center text-gray-500">
+      <h2 class="text-primary font-bold text-xl lg:text-4xl font-poppins">
+        Recruitment Packages
+      </h2>
+      <!-- <p class="w-full lg:w-3/5 mx-auto text-center text-gray-500">
         We are a diversified company that provides Engineering, Procurement and
         Construction (EPC) services, Dredging & Marine Logistics support
         services to the oil and gas industry, manufacturing and other sectors.
-      </p>
+      </p> -->
     </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {
-        services.map((service) => (
-          <WhatWeDoCard
-            title={service.title}
-            description={service.description}
-          />
-        ))
-      }
-    </div>
-    <div class="grid place-items-center">
-      <Button href="/services" variant="primary">See more...</Button>
-    </div>
+    <div class="grid lg grid-cols-3 gap-8"></div>
   </div>
 </section>
