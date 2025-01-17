@@ -1,26 +1,20 @@
 ---
 import Button from "./ui/Button.astro";
-
-interface Props {
-  title: string;
-  text: string;
-}
-
-const { title, text } = Astro.props;
 ---
 
-<section class="bg-gray-200 py-20 px-4 lg:px-0">
+<section class="bg-green-50 py-20 px-4 lg:px-0">
   <div
     class="rounded-lg container mx-auto grid place-items-center gap-4 md:gap-8 bg-primary text-white px-4 lg:px-8 py-10"
   >
     <div class="space-y-4">
       <h2 class="text-2xl lg:text-5xl font-bold font-poppins text-center">
-        {title}
+        Let's take your Hiring Worries off you!
       </h2>
       <p class="font-poppins font-light text-center w-full md:w-3/4 mx-auto">
-        {text}
+        <span class="font-bold">Need talent?</span> Our experts can help! save time
+        and resources. Schedule a quick call to build your dream team.
       </p>
     </div>
-    <Button variant="secondary" href="/contact">Contact Us Now</Button>
+    <Button variant="secondary" href="/contact">Schedule a call</Button>
   </div>
 </section>

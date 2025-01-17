@@ -1,66 +1,129 @@
 ---
+import { Icon } from "astro-icon/components";
+import HeaderBanner2 from "../components/HeaderBanner2.astro";
 import RootLayout from "../layouts/RootLayout.astro";
+import ContactUsBanner from "../components/ContactUsBanner.astro";
 ---
 
-<RootLayout title="Contact Us">
-  <section class="container mx-auto px-4 py-12">
-    <h2 class="text-3xl font-bold text-center mb-8">Contact Us</h2>
-
-    <!-- Contact Information -->
-    <section class="mb-12 text-center">
-      <p>
-        Address: No 5 Eligbam Street, Off Rumuola Road, Port Harcourt, Rivers
-        State, Nigeria
-      </p>
-      <p>
-        Email: <a
-          href="mailto:info@cepticon.net"
-          class="text-blue-500 hover:underline">info@cepticon.net</a
-        >
-      </p>
-      <p>Phone: +084 331672 | +234 803 704 7365</p>
+<RootLayout
+  title="Contact Us | Cepticon Limited"
+  description="B-MESON Limited is a leading recruitment and talent acquisition firm committed to connecting exceptional talent with ambitious organizations."
+  keywords="Contact Recruitment Agency, Recruitment Services, Job Inquiries, Employment Opportunities, Hiring Assistance, Get In Touch, Request Talent, Submit Resume, Career Assistance, Employer Services, Recruitment Support, Job Vacancies Inquiry, Speak With Us, Reach Out"
+>
+  <HeaderBanner2 route="Contact Us" />
+  <section class="container mx-auto px-4 py-10 lg:py-20">
+    <h2
+      class="relative text-3xl lg:text-4xl text-center font-poppins uppercase font-bold text-primary"
+    >
+      Get In Touch
+    </h2>
+    <hr
+      class="w-[70px] mx-auto bg-primary h-1 mb-4 lg:mb-8 mt-2 rounded-full"
+    />
+    <section class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div
+        class="bg-primary rounded-lg shadow-md shadow-primary text-center px-4 lg:px-6 py-8 flex flex-col items-center gap-4"
+      >
+        <div class="p-4 bg-orange-500 rounded-full">
+          <Icon name={"phone"} size={30} class="text-white" />
+        </div>
+        <h3 class="text-orange-500 text-xl font-bold font-poppins">Call</h3>
+        <div class="grid place-items-center gap-2">
+          <p class="font-bold text-lg text-white text-center font-inter">
+            +234 (0) 901 971 4692
+          </p>
+        </div>
+      </div>
+      <div
+        class="bg-primary rounded-lg shadow-md shadow-primary text-center px-4 lg:px-6 py-8 flex flex-col items-center gap-4"
+      >
+        <div class="p-4 bg-orange-500 rounded-full">
+          <Icon name={"email"} size={30} class="text-white" />
+        </div>
+        <h3 class="text-orange-500 text-xl font-bold font-poppins">Email</h3>
+        <div class="grid place-items-center gap-2">
+          <p class="font-bold text-lg text-white text-center font-inter">
+            info.bmeson@gmail.com
+          </p>
+          <p class="font-bold text-lg text-white text-center font-inter">
+            info@b-meson.com.ng
+          </p>
+        </div>
+      </div>
+      <div
+        class="bg-primary rounded-lg shadow-md shadow-primary text-center px-4 lg:px-6 py-8 flex flex-col items-center gap-4"
+      >
+        <div class="p-4 bg-orange-500 rounded-full">
+          <Icon name={"location"} size={30} class="text-white" />
+        </div>
+        <h3 class="text-orange-500 text-xl font-bold font-poppins">Visit</h3>
+        <p class="font-bold text-lg text-white text-center font-inter">
+          3/5 Charity Road, New Oko Oba, Lagos, Nigeria
+        </p>
+      </div>
     </section>
 
+    <ContactUsBanner />
+
     <!-- Contact Form -->
-    <section class="bg-white shadow-lg p-6 rounded-lg max-w-lg mx-auto">
-      <form action="https://formspree.io/f/{your_form_id}" method="POST">
-        <div class="mb-4">
-          <label for="name" class="block font-bold text-blue-900">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            required
-          />
-        </div>
-        <div class="mb-4">
-          <label for="email" class="block font-bold text-blue-900">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            required
-          />
-        </div>
-        <div class="mb-4">
-          <label for="message" class="block font-bold text-blue-900"
-            >Message</label
+    <section class="bg-white grid grid-cols-1 lg:grid-cols-2 gap-8 mt-10">
+      <div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d15852.019467268681!2d3.2969011793444682!3d6.646315743571515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s3%2F5%20Charity%20road%2C%20New%20Oko%20Oba%2C%20Lagos%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1737003564979!5m2!1sen!2sng"
+          width="600"
+          height="450"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="px-8 py-6 shadow-md">
+        <h2 class="text-3xl font-poppins uppercase font-bold mb-4 text-primary">
+          Send a message
+        </h2>
+        <form action="https://formspree.io/f/xjkveloz" method="POST">
+          <div class="mb-4">
+            <label for="name" class="block font-bold text-primary mb-2"
+              >Name</label
+            >
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-blue-500"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label for="email" class="block font-bold text-primary mb-2"
+              >Email</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-blue-500"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label for="message" class="block font-bold text-primary mb-2"
+              >Message</label
+            >
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-primary focus:border-blue-500"
+              required></textarea>
+          </div>
+          <button
+            type="submit"
+            class="bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-900"
+            >Send Message</button
           >
-          <textarea
-            id="message"
-            name="message"
-            rows="4"
-            class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            required></textarea>
-        </div>
-        <button
-          type="submit"
-          class="bg-blue-900 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700"
-          >Send Message</button
-        >
-      </form>
+        </form>
+      </div>
     </section>
   </section>
 </RootLayout>

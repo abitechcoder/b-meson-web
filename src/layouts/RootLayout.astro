@@ -2,18 +2,22 @@
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import NavBar from "../components/NavBar.astro";
+import "../base.css";
 
 interface Props {
   title: string;
+  description: string;
+  keywords: string;
 }
 
-const { title } = Astro.props;
+const { title, description, keywords } = Astro.props;
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,9 +28,8 @@ const { title } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/src/base.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <BaseHead title={title} />
+    <BaseHead title={title} description={description} keywords={keywords} />
   </head>
   <body>
     <NavBar />
@@ -35,5 +38,22 @@ const { title } = Astro.props;
       <!-- your content is injected here -->
     </main>
     <Footer />
+    <script type="text/javascript">
+      var $zoho = $zoho || {};
+      $zoho.salesiq = $zoho.salesiq || {
+        widgetcode:
+          "siqee504fb334918d620cc1cafbf225e63118d068583e59d7070ae6eec5c0b7cfe7",
+        values: {},
+        ready: function () {},
+      };
+      var d = document;
+      s = d.createElement("script");
+      s.type = "text/javascript";
+      s.id = "zsiqscript";
+      s.defer = true;
+      s.src = "https://salesiq.zoho.com/widget";
+      t = d.getElementsByTagName("script")[0];
+      t.parentNode.insertBefore(s, t);
+    </script>
   </body>
 </html>

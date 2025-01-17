@@ -5,24 +5,26 @@ import { Icon } from "astro-icon/components";
 <footer class="bg-primary text-white">
   <div class="py-8">
     <div
-      class="container mx-auto p-4 lg:px-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 text-white"
+      class="container mx-auto p-4 lg:px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 text-white"
     >
-      <div class="flex flex-col gap-8">
-        <a href="/" class="flex items-center gap-3">
+      <div class="flex flex-col gap-4">
+        <a href="/" class="flex items-center">
           <img
-            src="/src/assets/images/LogoWhite.png"
-            class="h-[40px]"
-            alt="Cepticon Limited Logo"
+            src="/src/assets/images/logo-white.png"
+            alt="B-MESON Limited Logo"
+            class="w-[70px] h-[70px]"
           />
-          <p class="text-base md:text-xl text-white font-anton">
-            Cepticon Limited
+          <p class="text-base font-inter font-black flex flex-col">
+            <span class="text-white h-[20px]">B-MESON</span>
+            <span class="text-white">LIMITED</span>
           </p>
         </a>
-        <p class="text-justify leading-loose">
-          Established in 2009, <span class="font-bold">CEPTICON LIMITED</span> is
-          a diversified company that provides Engineering, Procurement and Construction
-          (EPC) services, Dredging & Marine Logistics support services in the oil
-          and gas industry, manufacturing & other sectors alike in West Africa.
+        <p class="leading-8 font-inter text-justify text-sm">
+          <span class="font-bold">B-MESON Limited</span> is a leading recruitment
+          and talent acquisition firm committed to connecting exceptional talent
+          with ambitious organizations. We specialize in delivering innovative, efficient,
+          and reliable recruitment solutions tailored to the unique needs of our
+          clients.
         </p>
       </div>
       <div>
@@ -62,28 +64,66 @@ import { Icon } from "astro-icon/components";
           class="font-inter font-bold text-white grid gap-4 py-4 lg:py-8 text-base"
         >
           <div class="flex gap-4 items-center">
-            <div class="p-3 bg-orange-500 rounded-lg">
+            <div class="p-3 bg-secondary rounded-lg">
               <Icon name={"phone"} size={30} />
             </div>
-            <p>+234 803 704 7365, <br />+234 708 766 1083</p>
+            <p>+234 901 971 4692</p>
           </div>
           <div class="flex gap-4 items-center">
-            <div class="p-3 bg-orange-500 rounded-lg">
+            <div class="p-3 bg-secondary rounded-lg">
               <Icon name={"email"} size={30} />
             </div>
-            <p>cepticon2@yahoo.com, <br />info@cepticon.com</p>
+            <p>info.bmeson@gmail.com, <br />info@b-meson.com.ng</p>
           </div>
           <div class="flex gap-4 items-center">
-            <div class="p-3 bg-orange-500 rounded-lg">
+            <div class="p-3 bg-secondary rounded-lg">
               <Icon name={"location"} size={30} />
             </div>
-            <p>5, Eligbam Street, Rumuola Road, <br />Port Harcourt</p>
+            <p>3/5 Charity RD, New Oko Oba, Lagos, Nigeria</p>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="grid place-items-center text-center p-8 bg-blue-950">
-    <p>&copy; 2024 Cepticon Limited. All rights reserved.</p>
+  <div class="bg-green-950">
+    <div
+      class="container mx-auto flex flex-col md:flex-row justify-between items-center p-4 md:p-8 gap-8"
+    >
+      <p class="text-center md:text-left">
+        <strong>&copy; 2025 B-MESON Limited.</strong> All rights reserved.
+      </p>
+      <div class="flex items-center gap-6">
+        <a href="https://www.facebook.com/LagosJobConnect/" target="_blank"
+          ><img
+            src="/src/assets/images/facebook.svg"
+            class="w-8 h-8"
+            alt="Facebook icon"
+          /></a
+        >
+        <a href="https://wa.me/message/RN33VL3RKZAEO1" target="_blank"
+          ><img
+            src="/src/assets/images/whatsapp.svg"
+            class="w-8 h-8"
+            alt="Whatsapp icon"
+          /></a
+        >
+        <a
+          href="https://www.linkedin.com/company/lagosjobconnect/?viewAsMember=true"
+          target="_blank"
+          ><img
+            src="/src/assets/images/linkedin.svg"
+            class="w-8 h-8"
+            alt="LinkedIn icon"
+          /></a
+        >
+        <a href="https://www.instagram.com/lagosjobconnect/" target="_blank"
+          ><img
+            src="/src/assets/images/instagram.svg"
+            class="w-8 h-8"
+            alt="Whatsapp icon"
+          /></a
+        >
+      </div>
+    </div>
   </div>
 </footer>

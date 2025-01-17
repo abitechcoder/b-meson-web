@@ -10,15 +10,15 @@ export default {
     extend: {
       colors: {
         primary: "rgba(22,101,52,1)",
-        secondary: "rgb(182,165,89)"
+        secondary: "#b7963e",
       },
       animation: {
-        'scroll': 'scroll 30s linear infinite',
+        scroll: "scroll 30s linear infinite",
       },
       keyframes: {
         scroll: {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(calc(-250px * 8))' }
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(calc(-250px * 8))" },
         },
       },
     },

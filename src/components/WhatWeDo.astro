@@ -1,24 +1,289 @@
 ---
-import Button from "./ui/Button.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <section class="bg-white py-20 px-4">
   <div class="container mx-auto space-y-8">
     <div class="px-4 flex flex-col items-center gap-4">
       <div
-        class="bg-orange-100 text-orange-500 font-bold px-4 py-2 text-sm font-poppins rounded-full w-[100px] text-center"
+        class="bg-green-100 text-primary font-bold px-4 py-2 text-sm font-poppins rounded-full w-[100px] text-center"
       >
         SERVICES
       </div>
       <h2 class="text-primary font-bold text-xl lg:text-4xl font-poppins">
         Recruitment Packages
       </h2>
-      <!-- <p class="w-full lg:w-3/5 mx-auto text-center text-gray-500">
-        We are a diversified company that provides Engineering, Procurement and
-        Construction (EPC) services, Dredging & Marine Logistics support
-        services to the oil and gas industry, manufacturing and other sectors.
-      </p> -->
+      <p class="w-full lg:w-3/5 mx-auto text-center text-gray-500">
+        Choose a package that fits your recruitment needs
+      </p>
     </div>
-    <div class="grid lg grid-cols-3 gap-8"></div>
+    <div class="grid lg:grid-cols-3 gap-8">
+      <div
+        class="group flex shadow-lg flex-col font-poppins items-center px-4 gap-6 border-2 border-primary hover:scale-105 hover:cursor-pointer hover:bg-primary rounded-lg py-4"
+      >
+        <h1 class="font-bold text-2xl text-primary group-hover:text-white">
+          Booster Package
+        </h1>
+        <h3
+          class="font-bold text-3xl font-inter text-primary group-hover:text-white"
+        >
+          &#8358;45,000
+        </h3>
+        <p class="w-full text-center text-gray-600 group-hover:text-white">
+          Enjoy a comprehensive recruitment solution with a one-time payment of
+          just &#8358;45,000, ensuring great value for your investment.
+        </p>
+        <div
+          class="w-full ml-4 flex flex-col gap-2 text-black text-sm group-hover:text-white"
+        >
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>Job amplifier</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>CV Labeling and Screening</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>Lifetime Access to Candidate Pool</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>High-Volume Applications</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>Time-Saving Screening</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>Affordable Pricing</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p><strong>Timeframe:</strong> 45 days</p>
+          </div>
+        </div>
+        <a
+          href="#"
+          class="p-4 flex item-center justify-center bg-primary font-bold rounded-lg text-white w-full group-hover:bg-white group-hover:text-primary"
+          >Get Started</a
+        >
+      </div>
+      <!-- Standard package -->
+      <div
+        class="group shadow-lg flex flex-col font-poppins items-center px-4 gap-6 border-2 border-primary hover:scale-105 hover:cursor-pointer hover:bg-primary rounded-lg py-4"
+      >
+        <h1 class="font-bold text-2xl text-primary group-hover:text-white">
+          Standard Package
+        </h1>
+        <div class="flex flex-col items-center gap-2">
+          <h3
+            class="font-bold text-4xl font-inter text-primary group-hover:text-white"
+          >
+            7%
+          </h3>
+          <p
+            class="text-center font-bold font-inter text-primary group-hover:text-white"
+          >
+            of the annual gross salary
+          </p>
+        </div>
+        <p class="w-full text-center text-gray-600 group-hover:text-white">
+          Enjoy a hassle-free recruitment process while we handle all the heavy
+          lifting.
+        </p>
+        <div
+          class="w-full ml-4 flex flex-col gap-2 text-black text-sm group-hover:text-white"
+        >
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>Everything in Booster package, plus:</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>Client Briefing</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>Sourcing Candidates</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>Screening and Shortlisting</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>Interview Coordination</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>Candidate Presentation</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>Offer and Negotiation</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>Post-Hire Follow-Up</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>3-month replacement guarantee</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p><strong>Timeframe:</strong> 14-21 working days</p>
+          </div>
+        </div>
+        <a
+          href="#"
+          class="p-4 flex item-center justify-center bg-primary font-bold rounded-lg text-white w-full group-hover:bg-white group-hover:text-primary"
+          >Get Started</a
+        >
+      </div>
+      <!-- Executive package -->
+      <div
+        class="group shadow-lg flex flex-col font-poppins items-center px-4 gap-6 border-2 border-primary hover:scale-105 hover:cursor-pointer hover:bg-primary rounded-lg py-4"
+      >
+        <h1 class="font-bold text-2xl text-primary group-hover:text-white">
+          Executive Package
+        </h1>
+        <div class="flex flex-col items-center gap-2">
+          <h3
+            class="font-bold text-4xl font-inter text-primary group-hover:text-white"
+          >
+            15%
+          </h3>
+          <p
+            class="text-center font-bold font-inter text-primary group-hover:text-white"
+          >
+            of the annual gross salary
+          </p>
+        </div>
+        <p class="w-full text-center text-gray-600 group-hover:text-white">
+          Access to an all-encompassing recruitment process, from job creation
+          to onboarding, with everything handled by our team of experts.
+        </p>
+        <div
+          class="w-full ml-4 flex flex-col gap-2 text-black text-sm group-hover:text-white"
+        >
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>Everything in Standard package, plus:</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>Job Description Creation</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>Assessment and Interviews</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>Defining KPIs</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>Onboarding Support</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>Reference and Background Checks</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p>6-month replacement guarantee</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon
+              name="mdi:checkbox-outline"
+              size={16}
+              class="text-primary group-hover:text-white"
+            /><p><strong>Timeframe:</strong> 14-21 working days</p>
+          </div>
+        </div>
+        <a
+          href="#"
+          class="p-4 flex item-center justify-center bg-primary font-bold rounded-lg text-white w-full group-hover:bg-white group-hover:text-primary"
+          >Get Started</a
+        >
+      </div>
+    </div>
   </div>
 </section>

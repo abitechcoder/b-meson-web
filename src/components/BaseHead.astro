@@ -1,11 +1,15 @@
 ---
 interface Props {
-    title: string;
+  title: string;
+  description: string;
+  keywords: string;
 }
 
-const { title } = Astro.props;
+const { title, description, keywords } = Astro.props;
 ---
 
 <title>
-    {title}
+  {title}
 </title>
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
