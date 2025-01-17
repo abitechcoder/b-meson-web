@@ -67,18 +67,18 @@ import ContactUsBanner from "../components/ContactUsBanner.astro";
 
     <!-- Contact Form -->
     <section class="bg-white grid grid-cols-1 lg:grid-cols-2 gap-8 mt-10">
-      <div>
+      <div class="relative w-full pb-[56.25%]">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d15852.019467268681!2d3.2969011793444682!3d6.646315743571515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s3%2F5%20Charity%20road%2C%20New%20Oko%20Oba%2C%20Lagos%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1737003564979!5m2!1sen!2sng"
-          width="600"
-          height="450"
-          style="border:0;"
+          class="absolute top-0 left-0 w-full h-full border-0"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
       <div class="px-8 py-6 shadow-md">
-        <h2 class="text-3xl font-poppins uppercase font-bold mb-4 text-primary">
+        <h2
+          class="text-xl lg:text-3xl text-center lg:text-left font-poppins uppercase font-bold mb-4 text-primary"
+        >
           Send a message
         </h2>
         <form action="https://formspree.io/f/xjkveloz" method="POST">

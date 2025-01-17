@@ -4,13 +4,19 @@ interface Props {
 }
 
 const { route } = Astro.props;
+
+import { Image } from "astro:assets";
+import Office from "../assets/images/office.jpg";
 ---
 
-<div
-  class="relative bg-[url('/src/assets/images/office.jpg')] bg-cover bg-center h-[300px] before:absolute before:inset-0 before:bg-black/80"
->
+<div class="relative h-[300px]">
+  <Image
+    src={Office}
+    alt="Positive working environment"
+    class="object-cover object-center h-full"
+  />
   <div
-    class="absolute z-10 top-0 left-0 h-full w-full flex flex-col gap-2 justify-center py-8"
+    class="absolute bg-black/80 z-10 top-0 left-0 h-full w-full flex flex-col gap-2 justify-center py-8"
   >
     <h2
       class="text-3xl lg:text-4xl font-bold text-white font-poppins container mx-auto px-4"
