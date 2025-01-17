@@ -1,5 +1,12 @@
 ---
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+
+import Logo from "../assets/images/logo-white.png";
+import Facebook from "../assets/images/facebook.svg";
+import Whatsapp from "../assets/images/whatsapp.svg";
+import LinkedIn from "../assets/images/linkedin.svg";
+import Instagram from "../assets/images/instagram.svg";
 ---
 
 <footer class="bg-primary text-white">
@@ -9,8 +16,8 @@ import { Icon } from "astro-icon/components";
     >
       <div class="flex flex-col gap-4">
         <a href="/" class="flex items-center">
-          <img
-            src="/src/assets/images/logo-white.png"
+          <Image
+            src={Logo}
             alt="B-MESON Limited Logo"
             class="w-[70px] h-[70px]"
           />
@@ -94,34 +101,18 @@ import { Icon } from "astro-icon/components";
       </p>
       <div class="flex items-center gap-6">
         <a href="https://www.facebook.com/LagosJobConnect/" target="_blank"
-          ><img
-            src="/src/assets/images/facebook.svg"
-            class="w-8 h-8"
-            alt="Facebook icon"
-          /></a
+          ><Image src={Facebook} class="w-8 h-8" alt="Facebook icon" /></a
         >
         <a href="https://wa.me/message/RN33VL3RKZAEO1" target="_blank"
-          ><img
-            src="/src/assets/images/whatsapp.svg"
-            class="w-8 h-8"
-            alt="Whatsapp icon"
-          /></a
+          ><Image src={Whatsapp} class="w-8 h-8" alt="Whatsapp icon" /></a
         >
         <a
           href="https://www.linkedin.com/company/lagosjobconnect/?viewAsMember=true"
           target="_blank"
-          ><img
-            src="/src/assets/images/linkedin.svg"
-            class="w-8 h-8"
-            alt="LinkedIn icon"
-          /></a
+          ><Image src={LinkedIn} class="w-8 h-8" alt="LinkedIn icon" /></a
         >
         <a href="https://www.instagram.com/lagosjobconnect/" target="_blank"
-          ><img
-            src="/src/assets/images/instagram.svg"
-            class="w-8 h-8"
-            alt="Whatsapp icon"
-          /></a
+          ><Image src={Instagram} class="w-8 h-8" alt="Whatsapp icon" /></a
         >
       </div>
     </div>

@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import Button from "./ui/Button.astro";
+import Puzzle from "../assets/images/puzzle-pieces.jpg";
 ---
 
 <section class="bg-green-50 py-20 px-4">
@@ -19,8 +21,8 @@ import Button from "./ui/Button.astro";
         <Button href="/contact" variant="primary">Find Top Talent</Button>
       </div>
       <div>
-        <img
-          src="/src/assets/images/puzzle-pieces.jpg"
+        <Image
+          src={Puzzle}
           alt="Solving puzzle pieces"
           class="h-[300px] lg:h-[400px] w-full object-cover object-center rounded-lg"
         />

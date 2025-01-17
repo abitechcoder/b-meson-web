@@ -1,5 +1,8 @@
 ---
 import Button from "./ui/Button.astro";
+import Office from "../assets/images/office.jpg";
+
+import { Image } from "astro:assets";
 ---
 
 <section class="bg-primary py-10 lg:py-20 text-white font-poppins">
@@ -32,8 +35,8 @@ import Button from "./ui/Button.astro";
         </p>
       </div>
     </div>
-    <img
-      src="/src/assets/images/office.jpg"
+    <Image
+      src={Office}
       alt="Image of a staffs having a meeting"
       class="h-[300px] lg:h-[450px] w-full object-cover object-bottom mt-10 rounded-lg"
     />

@@ -5,6 +5,12 @@ import SectionHeader from "../components/ui/SectionHeader.astro";
 import Partners from "../components/Partners.astro";
 import ContactUsBanner from "../components/ContactUsBanner.astro";
 import HeaderBanner from "../components/HeaderBanner.astro";
+import { Image } from "astro:assets";
+
+import BG from "../assets/images/bg2.jpg";
+import Mayowa from "../assets/images/team/mayowa.png";
+import Chioma from "../assets/images/team/chioma.png";
+import Recruiter from "../assets/images/team/recruiter.jpg";
 ---
 
 <RootLayout
@@ -47,10 +53,7 @@ import HeaderBanner from "../components/HeaderBanner.astro";
             helping even more businesses thrive.
           </p>
         </div>
-        <img
-          src="/src/assets/images/bg2.jpg"
-          alt="Positive working environment"
-        />
+        <Image src={BG} alt="Positive working environment" />
       </div>
     </section>
 
@@ -106,9 +109,9 @@ import HeaderBanner from "../components/HeaderBanner.astro";
       <SectionHeader text="team" title="Meet our team" />
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="bg-white shadow-md shadow-primary rounded-lg relative">
-          <img
-            src="/src/assets/images/team/mayowa.png"
-            alt="Team Member"
+          <Image
+            src={Mayowa}
+            alt="A picture of Adeosun Oluwatimilehin the CEO of B-MESON Limited"
             class="w-full h-[400px] object-cover object-top"
           />
           <div
@@ -119,9 +122,9 @@ import HeaderBanner from "../components/HeaderBanner.astro";
           </div>
         </div>
         <div class="bg-white shadow-md shadow-primary rounded-lg relative">
-          <img
-            src="/src/assets/images/team/recruiter.jpg"
-            alt="Team Member"
+          <Image
+            src={Recruiter}
+            alt="A picture of Ikponmwosa Eboigbe, the Talent Acquisition Manager at B-Meson Limited"
             class="w-full h-[400px] object-cover object-center"
           />
           <div
@@ -132,9 +135,9 @@ import HeaderBanner from "../components/HeaderBanner.astro";
           </div>
         </div>
         <div class="bg-white shadow-md shadow-primary rounded-lg relative">
-          <img
-            src="/src/assets/images/team/chioma.png"
-            alt="Team Member"
+          <Image
+            src={Chioma}
+            alt="A picture of Chioma Oparah, the Business Development Manager at B-Meson Limited"
             class="w-full h-[400px] object-cover object-center"
           />
           <div
