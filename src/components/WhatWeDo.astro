@@ -1,5 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import Bronze from "../assets/images/bronze.jpg";
+import Silver from "../assets/images/silver.jpg";
+import Gold from "../assets/images/gold.jpg";
 ---
 
 <section class="bg-white py-20 px-4">
@@ -19,11 +23,20 @@ import { Icon } from "astro-icon/components";
     </div>
     <div class="grid lg:grid-cols-3 gap-8">
       <div
-        class="group flex shadow-lg flex-col font-poppins items-center px-4 gap-6 border-2 border-primary hover:scale-105 hover:cursor-pointer hover:bg-primary rounded-lg py-4"
+        class="group relative flex shadow-lg flex-col font-poppins items-center px-4 gap-6 border-2 border-primary hover:scale-105 hover:cursor-pointer hover:bg-primary rounded-lg py-4"
       >
-        <h1 class="font-bold text-2xl text-primary group-hover:text-white">
-          Booster Package
-        </h1>
+        <div class="flex flex-col items-center gap-2">
+          <Image
+            src={Bronze}
+            alt="bronze package"
+            class="w-14 h-14 rounded-full"
+          />
+          <h1
+            class="font-bold text-2xl text-primary text-center group-hover:text-white"
+          >
+            Booster Package
+          </h1>
+        </div>
         <h3
           class="font-bold text-3xl font-inter text-primary group-hover:text-white"
         >
@@ -94,104 +107,107 @@ import { Icon } from "astro-icon/components";
       </div>
       <!-- Standard package -->
       <div
-        class="group shadow-lg flex flex-col font-poppins items-center px-4 gap-6 border-2 border-primary hover:scale-105 hover:cursor-pointer hover:bg-primary rounded-lg py-4"
+        class="group shadow-lg flex flex-col font-poppins items-center px-4 gap-6 border-2 border-primary bg-primary scale-105 hover:cursor-pointer hover:bg-white rounded-lg py-4"
       >
-        <h1 class="font-bold text-2xl text-primary group-hover:text-white">
-          Standard Package
-        </h1>
+        <div class="flex flex-col items-center gap-2">
+          <Image
+            src={Silver}
+            alt="silver package"
+            class="w-14 h-14 rounded-full"
+          />
+          <h1
+            class="font-bold text-2xl text-white text-center group-hover:text-primary"
+          >
+            Standard Package
+          </h1>
+        </div>
+
         <div class="flex flex-col items-center gap-2">
           <h3
-            class="font-bold text-4xl font-inter text-primary group-hover:text-white"
+            class="font-bold text-4xl font-inter text-white group-hover:text-primary"
           >
             7%
           </h3>
           <p
-            class="text-center font-bold font-inter text-primary group-hover:text-white"
+            class="text-center font-bold font-inter text-white group-hover:text-primary"
           >
             of the annual gross salary
           </p>
         </div>
-        <p class="w-full text-center text-gray-600 group-hover:text-white">
+        <p class="w-full text-center text-white group-hover:text-gray-600">
           Enjoy a hassle-free recruitment process while we handle all the heavy
           lifting.
         </p>
         <div
-          class="w-full ml-4 flex flex-col gap-2 text-black text-sm group-hover:text-white"
+          class="w-full ml-4 flex flex-col gap-2 text-white text-sm group-hover:text-black"
         >
           <div class="flex items-center gap-2">
             <Icon
               name="mdi:checkbox-outline"
               size={16}
-              class="text-primary group-hover:text-white"
-            /><p>Everything in Booster package, plus:</p>
-          </div>
-          <div class="flex items-center gap-2">
-            <Icon
-              name="mdi:checkbox-outline"
-              size={16}
-              class="text-primary group-hover:text-white"
+              class="text-white group-hover:text-primary"
             /><p>Client Briefing</p>
           </div>
           <div class="flex items-center gap-2">
             <Icon
               name="mdi:checkbox-outline"
               size={16}
-              class="text-primary group-hover:text-white"
+              class="text-white group-hover:text-primary"
             /><p>Sourcing Candidates</p>
           </div>
           <div class="flex items-center gap-2">
             <Icon
               name="mdi:checkbox-outline"
               size={16}
-              class="text-primary group-hover:text-white"
+              class="text-white group-hover:text-primary"
             /><p>Screening and Shortlisting</p>
           </div>
           <div class="flex items-center gap-2">
             <Icon
               name="mdi:checkbox-outline"
               size={16}
-              class="text-primary group-hover:text-white"
+              class="text-white group-hover:text-primary"
             /><p>Interview Coordination</p>
           </div>
           <div class="flex items-center gap-2">
             <Icon
               name="mdi:checkbox-outline"
               size={16}
-              class="text-primary group-hover:text-white"
+              class="text-white group-hover:text-primary"
             /><p>Candidate Presentation</p>
           </div>
           <div class="flex items-center gap-2">
             <Icon
               name="mdi:checkbox-outline"
               size={16}
-              class="text-primary group-hover:text-white"
+              class="text-white group-hover:text-primary"
             /><p>Offer and Negotiation</p>
           </div>
           <div class="flex items-center gap-2">
             <Icon
               name="mdi:checkbox-outline"
               size={16}
-              class="text-primary group-hover:text-white"
+              class="text-white group-hover:text-primary"
             /><p>Post-Hire Follow-Up</p>
           </div>
           <div class="flex items-center gap-2">
             <Icon
               name="mdi:checkbox-outline"
               size={16}
-              class="text-primary group-hover:text-white"
+              class="text-white group-hover:text-primary"
             /><p>3-month replacement guarantee</p>
           </div>
           <div class="flex items-center gap-2">
             <Icon
               name="mdi:checkbox-outline"
               size={16}
-              class="text-primary group-hover:text-white"
+              class="text-white group-hover:text-primary"
             /><p><strong>Timeframe:</strong> 14-21 working days</p>
           </div>
         </div>
         <a
           href="/standard"
-          class="p-4 flex item-center justify-center bg-primary font-bold rounded-lg text-white w-full group-hover:bg-white group-hover:text-primary"
+          class="p-4 flex item-center justify-center bg-white font-bold rounded-lg text-primary w-full group-hover:bg-primary group-hover:text-white"
           >Get Started</a
         >
       </div>
@@ -199,9 +215,12 @@ import { Icon } from "astro-icon/components";
       <div
         class="group shadow-lg flex flex-col font-poppins items-center px-4 gap-6 border-2 border-primary hover:scale-105 hover:cursor-pointer hover:bg-primary rounded-lg py-4"
       >
-        <h1 class="font-bold text-2xl text-primary group-hover:text-white">
-          Executive Package
-        </h1>
+        <div class="flex flex-col items-center gap-2">
+          <Image src={Gold} alt="gold package" class="w-14 h-14 rounded-full" />
+          <h1 class="font-bold text-2xl text-primary group-hover:text-white">
+            Executive Package
+          </h1>
+        </div>
         <div class="flex flex-col items-center gap-2">
           <h3
             class="font-bold text-4xl font-inter text-primary group-hover:text-white"

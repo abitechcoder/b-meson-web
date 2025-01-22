@@ -55,6 +55,8 @@ export const server = {
     handler: async (input) => {
       input["package"] = "standard";
 
+      console.log("Input:", input);
+
       const keyValuePairs = [];
       for (let key in input) {
         keyValuePairs.push(key + "=" + input[key]);
@@ -62,7 +64,7 @@ export const server = {
 
       const formDataString = keyValuePairs.join("&");
       const url =
-        "https://script.google.com/macros/s/AKfycbwdprlzaeBVeRNiKftptJkWRLx_BNYPMOF3Q3op8-EVdRHLSihD0TD5hw0q9IabVlfb/exec";
+        "https://script.google.com/macros/s/AKfycbz00gpwmhgdv3PhNmJl4wRls2f3ztD8IuLFPlzIy8Kykl5rcG9xC26L0uE20qm-1hdo/exec?sheet=Premium";
 
       try {
         const response = await fetch(url, {
@@ -73,7 +75,6 @@ export const server = {
             "Content-Type": "text/plain;charset=utf-8",
           },
         });
-        console.log("Response", response)
         return { data: response.ok };
       } catch (error) {
         return { error };
