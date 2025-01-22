@@ -1,0 +1,225 @@
+---
+import RootLayout from "../layouts/RootLayout.astro";
+---
+
+<RootLayout
+  title="Our Packages | B-MESON Limited"
+  description="B-MESON Limited is a leading recruitment and talent acquisition firm committed to connecting exceptional talent with ambitious organizations."
+  keywords="Staffing Solutions, Workforce Management, Job Placement Services, Executive Search, Recruitment Services, Permanent Placements, IT recruiting Candidate screening Other Hybrid Specialized skillployees services"
+>
+  <main
+    id="booster-form"
+    class="my-4 lg:my-10 w-full max-w-xl mx-auto border rounded-lg p-8 shadow-lg"
+    aria-label="Recruitment Form"
+  >
+        <h3 class="text-lg lg:text-xl font-bold text-center font-poppins text-primary">
+        Schedule a Call
+        </h3>
+    <form id="recruitmentForm" method="POST">
+      <div class="mb-4">
+        <label for="fullName" class="block text-primary font-bold mb-2"
+          >Full Name</label
+        >
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          placeholder="Enter your fullname"
+          class="input-field"
+          required
+          aria-required="true"
+        />
+        <p class="error-message hidden" id="error-fullName">
+          Full Name is required.
+        </p>
+      </div>
+      <div class="mb-4">
+        <label for="companyName" class="block text-primary font-bold mb-2"
+          >Company Name</label
+        >
+        <input
+          type="text"
+          id="companyName"
+          name="companyName"
+          placeholder="Enter your company name"
+          class="input-field"
+          required
+          aria-required="true"
+        />
+        <p class="error-message hidden" id="error-companyName">
+          Company Name is required.
+        </p>
+      </div>
+      <div class="mb-4">
+        <label for="email" class="block text-primary font-bold mb-2"
+          >Email Address</label
+        >
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          class="input-field"
+          required
+          aria-required="true"
+        />
+        <p class="error-message hidden" id="error-email">
+          Valid Email is required.
+        </p>
+      </div>
+      <div class="mb-4">
+        <label for="phone" class="block text-primary font-bold mb-2"
+          >Phone Number</label
+        >
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="Enter your phone number"
+          class="input-field"
+          required
+          aria-required="true"
+        />
+        <p class="error-message hidden" id="error-phone">
+          Phone Number is required.
+        </p>
+      </div>
+      <div class="mb-4">
+        <label for="location" class="block text-primary font-bold mb-2"
+          >Location</label
+        >
+        <input
+          type="text"
+          id="location"
+          name="location"
+          placeholder="Enter your location"
+          class="input-field"
+          required
+          aria-required="true"
+        />
+        <p class="error-message hidden" id="error-location">
+          Location is required.
+        </p>
+      </div>
+      <div class="mb-4">
+        <label for="position" class="block text-primary font-bold mb-2"
+          >What Position do you want to fill?</label
+        >
+        <input
+          type="text"
+          id="position"
+          name="position"
+          placeholder="Enter the position you want to fill"
+          class="input-field"
+          required
+          aria-required="true"
+        />
+        <p class="error-message hidden" id="error-position">
+          Position is required.
+        </p>
+      </div>
+
+      <div class="mb-4">
+        <label for="preferredDate" class="block text-primary font-bold mb-2"
+          >Preferred Date</label
+        >
+        <input
+          type="date"
+          id="preferredDate"
+          name="preferredDate"
+          class="input-field"
+          required
+          aria-required="true"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="preferredTime" class="block text-primary font-bold mb-2"
+          >Preferred Time</label
+        >
+        <input
+          type="time"
+          id="preferredTime"
+          name="preferredTime"
+          class="input-field"
+          required
+          aria-required="true"
+        />
+      </div>
+      
+      <div class="flex items-center justify-between">
+        <button
+          type="submit"
+          id="submitForm"
+          class="bg-primary w-full hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          aria-label="Submit"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    import { actions, isInputError } from "astro:actions";
+    import { navigate } from "astro:transitions/client";
+
+    const form = document.querySelector("form");
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const { error } = await actions.standard(formData);
+
+      const inputs = form.querySelectorAll(".input-field");
+
+      if (isInputError(error)) {
+        // Handle input errors
+        inputs.forEach((input) => {
+          const errorElement = document.getElementById(`error-${input.id}`);
+          if (error.fields[input.id]) {
+            const message = error.fields[input.id].join(", ");
+            errorElement.textContent = message;
+            errorElement.classList.remove("hidden");
+          } else {
+            errorElement.classList.add("hidden");
+            input.classList.remove("border-red-500");
+          }
+        });
+      }
+
+      if (!error) {
+        navigate("/success");
+      }
+    });
+  </script>
+
+  <style>
+    .input-field {
+      border: 1px solid #ddd;
+      padding: 0.5rem;
+      width: 100%;
+      border-radius: 0.375rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: #4caf50;
+      box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
+    }
+
+    .error-message {
+      color: red;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .border-red-500 {
+      border-color: red !important;
+    }
+  </style>
+</RootLayout>

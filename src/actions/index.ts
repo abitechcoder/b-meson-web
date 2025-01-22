@@ -30,4 +30,54 @@ export const server = {
       return input;
     },
   }),
+  standard: defineAction({
+    accept: "form",
+    input: z.object({
+      fullName: z.string().min(4, {
+        message: "Full name must be more than of 3 characters",
+      }),
+      companyName: z.string().min(4, {
+        message: "Company name must be more than of 3 characters",
+      }),
+      email: z.string().email(),
+      phone: z.string().min(11, {
+        message: "Phone number must be minimum of 11 characters",
+      }),
+      location: z.string().min(4, {
+        message: "Location must be more than of 3 characters",
+      }),
+      position: z.string().min(4, {
+        message: "Position must be more than of 3 characters",
+      }),
+      preferredDate: z.string(),
+      preferredTime: z.string(),
+    }),
+    handler: async (input) => {
+      input["package"] = "standard";
+
+      const keyValuePairs = [];
+      for (let key in input) {
+        keyValuePairs.push(key + "=" + input[key]);
+      }
+
+      const formDataString = keyValuePairs.join("&");
+      const url =
+        "https://script.google.com/macros/s/AKfycbwdprlzaeBVeRNiKftptJkWRLx_BNYPMOF3Q3op8-EVdRHLSihD0TD5hw0q9IabVlfb/exec";
+
+      try {
+        const response = await fetch(url, {
+          redirect: "follow",
+          method: "POST",
+          body: formDataString,
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8",
+          },
+        });
+        console.log("Response", response)
+        return { data: response.ok };
+      } catch (error) {
+        return { error };
+      }
+    },
+  }),
 };

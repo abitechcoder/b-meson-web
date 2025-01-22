@@ -167,6 +167,53 @@ import RootLayout from "../layouts/RootLayout.astro";
   keywords="Staffing Solutions, Workforce Management, Job Placement Services, Executive Search, Recruitment Services, Permanent Placements, IT recruiting Candidate screening Other Hybrid Specialized skillployees services"
 >
   <main
+    id="payment-details"
+    class="my-4 lg:my-10 w-full max-w-xl mx-auto border rounded-lg p-8 shadow-lg hidden"
+    aria-label="Payment Details"
+  >
+    <div class="flex items-center gap-4 mb-4">
+      <p>
+        <span class="text-2xl text-primary font-bold">2/</span>2
+      </p>
+      <p class="text-lg font-bold font-poppins text-primary">Make payment</p>
+    </div>
+    <div class="mb-8">
+      <h2
+        class="text-2xl lg:text-4xl font-bold font-poppins text-center text-primary"
+      >
+        &#8358;45,000
+      </h2>
+      <p class="text-gray-400 text-sm text-center">Amount to be paid</p>
+    </div>
+    <div class="flex flex-col gap-4 lg:gap-8">
+      <div class="flex items-center justify-between">
+        <h3 class="text-lg font-bold text-primary">Account Number:</h3>
+        <p class="text-2xl font-bold">0142623353</p>
+      </div>
+      <div class="flex items-center justify-between">
+        <h3 class="text-lg font-bold text-primary">Account Name:</h3>
+        <p class="text-2xl font-bold">Adeosun Abiola Olalekan</p>
+      </div>
+      <div class="flex items-center justify-between">
+        <h3 class="text-lg font-bold text-primary">Bank Name:</h3>
+        <p class="text-2xl font-bold">GTBank</p>
+      </div>
+      <button
+        id="paymentButton"
+        class="bg-primary w-full hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        aria-label="I have paid"
+      >
+        I have paid
+      </button>
+    </div>
+    <div
+      id="error-message"
+      class="w-full bg-red-700 text-white p-4 rounded-lg text-center mt-4 hidden"
+    >
+      An error occurred while submitting the form.
+    </div>
+  </main>
+  <main
     id="booster-form"
     class="my-4 lg:my-10 w-full max-w-xl mx-auto border rounded-lg p-8 shadow-lg"
     aria-label="Recruitment Form"
@@ -309,53 +356,6 @@ import RootLayout from "../layouts/RootLayout.astro";
         </button>
       </div>
     </form>
-  </main>
-  <main
-    id="payment-details"
-    class="my-4 lg:my-10 w-full max-w-xl mx-auto border rounded-lg p-8 shadow-lg hidden"
-    aria-label="Payment Details"
-  >
-    <div class="flex items-center gap-4 mb-4">
-      <p>
-        <span class="text-2xl text-primary font-bold">2/</span>2
-      </p>
-      <p class="text-lg font-bold font-poppins text-primary">Make payment</p>
-    </div>
-    <div class="mb-8">
-      <h2
-        class="text-2xl lg:text-4xl font-bold font-poppins text-center text-primary"
-      >
-        &#8358;45,000
-      </h2>
-      <p class="text-gray-400 text-sm text-center">Amount to be paid</p>
-    </div>
-    <div class="flex flex-col gap-4 lg:gap-8">
-      <div class="flex items-center justify-between">
-        <h3 class="text-lg font-bold text-primary">Account Number:</h3>
-        <p class="text-2xl font-bold">0142623353</p>
-      </div>
-      <div class="flex items-center justify-between">
-        <h3 class="text-lg font-bold text-primary">Account Name:</h3>
-        <p class="text-2xl font-bold">Adeosun Abiola Olalekan</p>
-      </div>
-      <div class="flex items-center justify-between">
-        <h3 class="text-lg font-bold text-primary">Bank Name:</h3>
-        <p class="text-2xl font-bold">GTBank</p>
-      </div>
-      <button
-        id="paymentButton"
-        class="bg-primary w-full hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        aria-label="I have paid"
-      >
-        I have paid
-      </button>
-    </div>
-    <div
-      id="error-message"
-      class="w-full bg-red-700 text-white p-4 rounded-lg text-center mt-4 hidden"
-    >
-      An error occurred while submitting the form.
-    </div>
   </main>
 
   <script>
