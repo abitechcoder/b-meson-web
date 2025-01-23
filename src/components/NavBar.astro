@@ -5,7 +5,7 @@ import { Icon } from "astro-icon/components";
 import Logo from "../assets/images/Logo.png";
 ---
 
-<header class="bg-white">
+<header class="bg-white fixed top-0 left-0 z-20 w-full shadow-md">
   <nav
     class="container px-4 md:px-0 mx-auto flex justify-between items-center navbar"
   >
@@ -26,22 +26,56 @@ import Logo from "../assets/images/Logo.png";
       <div class="hidden md:block">
         <Button variant="primary" href="/contact">Get in Touch</Button>
       </div>
-      <Icon
-        name="mdi-light--menu"
-        size={40}
-        class="text-green-800 lg:hidden cursor-pointer"
-      />
+      <button id="mobile-menu-btn">
+        <Icon
+          name="mdi-light--menu"
+          size={40}
+          class="text-green-800 lg:hidden cursor-pointer"
+        />
+      </button>
     </div>
   </nav>
+  <div class="lg:hidden">
+    <ul id="mobile-menu" class="hidden space-y-8 text-center p-8">
+      <li><a href="/" class="mobile-link">Home</a></li>
+      <li>
+        <a href="/about" class="mobile-link">About Us</a>
+      </li>
+      <li>
+        <a href="/services" class="mobile-link">Services</a>
+      </li>
+      <li>
+        <a href="/#testimonials" class="mobile-link">Testimonials</a>
+      </li>
+      <li>
+        <a href="/contact" class="mobile-link">Contact Us</a>
+      </li>
+    </ul>
+  </div>
 </header>
 
 <script>
   const nav = document.querySelector(".navbar");
   const navLinks = nav.querySelectorAll(".link");
   const currentURL = window.location.href;
+  const menu = document.getElementById("mobile-menu");
+  const mobileNavLinks = menu.querySelectorAll(".mobile-link");
+  const MobileMenuBtn = document.getElementById("mobile-menu-btn");
   navLinks.forEach((link: any) => {
     if (link.href === currentURL) {
       link.classList.add("active-link");
     }
   });
+
+  mobileNavLinks.forEach((link: any) => {
+    if (link.href === currentURL) {
+      link.classList.add("active-link");
+    }
+  });
+
+  function toggleMenu() {
+    menu.classList.toggle("hidden");
+  }
+
+  MobileMenuBtn.addEventListener("click", toggleMenu);
 </script>
