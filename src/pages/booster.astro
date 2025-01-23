@@ -362,25 +362,28 @@ import RootLayout from "../layouts/RootLayout.astro";
     import { actions, isInputError } from "astro:actions";
     import { navigate } from "astro:transitions/client";
 
+    const webAppUrl = import.meta.env.PUBLIC_WEB_APP_URL;
     const boosterForm = document.getElementById("booster-form");
     const paymentInfo = document.getElementById("payment-details");
-    const paymentBtn = document.getElementById("paymentButton");
+    const paymentBtn = document.getElementById(
+      "paymentButton"
+    ) as HTMLButtonElement;
 
-    async function submitForm(formDataString: string) {
-      const url =
-        "https://script.google.com/macros/s/AKfycbz00gpwmhgdv3PhNmJl4wRls2f3ztD8IuLFPlzIy8Kykl5rcG9xC26L0uE20qm-1hdo/exec?sheet=Booster";
+    async function submitForm(data) {
+      const url = `${webAppUrl}?sheet=Booster`;
 
       try {
         const response = await fetch(url, {
           redirect: "follow",
           method: "POST",
-          body: formDataString,
+          body: data,
           headers: {
             "Content-Type": "text/plain;charset=utf-8",
           },
         });
         return { data: response.ok };
       } catch (error) {
+        console.log("Error:", error);
         return { error };
       }
     }
@@ -415,21 +418,17 @@ import RootLayout from "../layouts/RootLayout.astro";
         paymentBtn.addEventListener("click", async () => {
           data["paid"] = "yes";
 
-          const keyValuePairs = [];
-          for (let key in data) {
-            keyValuePairs.push(key + "=" + data[key]);
-          }
-
-          const formDataString = keyValuePairs.join("&");
+          const body = JSON.stringify(data);
           paymentBtn.textContent = "Submitting data, please wait";
-          const result = await submitForm(formDataString);
+          paymentBtn.disabled = true;
+          const result = await submitForm(body);
           if (result.data) {
-            paymentBtn.textContent = "I have paid";
             navigate("/success");
           }
 
           if (result.error) {
             paymentBtn.textContent = "I have paid";
+            paymentBtn.disabled = false;
             const errorMessageElement =
               document.getElementById("error-message");
             errorMessageElement.classList.remove("hidden");
@@ -470,6 +469,10 @@ import RootLayout from "../layouts/RootLayout.astro";
 
     .border-red-500 {
       border-color: red !important;
+    }
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
   </style>
 </RootLayout>

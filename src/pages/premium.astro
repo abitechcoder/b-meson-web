@@ -122,6 +122,36 @@ import RootLayout from "../layouts/RootLayout.astro";
       </div>
 
       <div class="mb-4">
+        <label for="position" class="block text-primary font-bold mb-2"
+          >Choose a Package?</label
+        >
+        <div class="flex gap-8 text-lg">
+          <div class="flex items-center gap-2">
+            <input
+              type="radio"
+              id="standard"
+              name="package"
+              value="standard"
+              checked
+              class="checked:text-primary w-6 h-6"
+            />
+            <label for="standard" class="cursor-pointer">Standard</label>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <input
+              type="radio"
+              id="executive"
+              name="package"
+              value="executive"
+              class="checked:text-primary w-6 h-6"
+            />
+            <label for="executive" class="cursor-pointer">Executive</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-4">
         <label for="preferredDate" class="block text-primary font-bold mb-2"
           >Preferred Date</label
         >
@@ -182,8 +212,8 @@ import RootLayout from "../layouts/RootLayout.astro";
       submitButton.textContent = "Submitting data...";
 
       const formData = new FormData(form);
-      formData.set("package", "standard");
       const { error } = await actions.premium(formData);
+
       const inputs = form.querySelectorAll(".input-field");
 
       if (isInputError(error)) {

@@ -182,8 +182,9 @@ import RootLayout from "../layouts/RootLayout.astro";
       submitButton.textContent = "Submitting data...";
 
       const formData = new FormData(form);
-      formData.set("package", "standard");
+      formData.set("package", "executive");
       const { error } = await actions.premium(formData);
+
       const inputs = form.querySelectorAll(".input-field");
 
       if (isInputError(error)) {

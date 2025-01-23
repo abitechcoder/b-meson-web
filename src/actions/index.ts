@@ -1,5 +1,6 @@
 import { defineAction } from "astro:actions";
 import { z } from "astro:schema";
+const webAppUrl = import.meta.env.PUBLIC_WEB_APP_URL;
 
 export const server = {
   booster: defineAction({
@@ -30,7 +31,7 @@ export const server = {
       return input;
     },
   }),
-  standard: defineAction({
+  premium: defineAction({
     accept: "form",
     input: z.object({
       fullName: z.string().min(4, {
@@ -51,26 +52,17 @@ export const server = {
       }),
       preferredDate: z.string(),
       preferredTime: z.string(),
+      package: z.string(),
     }),
     handler: async (input) => {
-      input["package"] = "standard";
-
-      console.log("Input:", input);
-
-      const keyValuePairs = [];
-      for (let key in input) {
-        keyValuePairs.push(key + "=" + input[key]);
-      }
-
-      const formDataString = keyValuePairs.join("&");
-      const url =
-        "https://script.google.com/macros/s/AKfycbz00gpwmhgdv3PhNmJl4wRls2f3ztD8IuLFPlzIy8Kykl5rcG9xC26L0uE20qm-1hdo/exec?sheet=Premium";
+      const data = JSON.stringify(input);
+      const url = `${webAppUrl}?sheet=Premium`;
 
       try {
         const response = await fetch(url, {
           redirect: "follow",
           method: "POST",
-          body: formDataString,
+          body: data,
           headers: {
             "Content-Type": "text/plain;charset=utf-8",
           },
