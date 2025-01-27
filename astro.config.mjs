@@ -8,7 +8,7 @@ import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://bmeson.netlify.app/",
+  // site: "https://bmeson.netlify.app/",
 
   integrations: [
     tailwind({
