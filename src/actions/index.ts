@@ -69,6 +69,39 @@ export const server = {
         });
         return { data: response.ok };
       } catch (error) {
+        console.error("Premium Error:", error);
+        return { error };
+      }
+    },
+  }),
+  contact: defineAction({
+    accept: "form",
+    input: z.object({
+      name: z.string().min(4, {
+        message: "Name must be more than of 3 characters",
+      }),
+      email: z.string().email(),
+      phone: z.string().min(11, {
+        message: "Phone number must be minimum of 11 characters",
+      }),
+      message: z.string(),
+    }),
+    handler: async (input) => {
+      const data = JSON.stringify(input);
+      const url = `${webAppUrl}?sheet=ContactUs`;
+
+      try {
+        const response = await fetch(url, {
+          redirect: "follow",
+          method: "POST",
+          body: data,
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8",
+          },
+        });
+        return { data: response.ok };
+      } catch (error) {
+        console.error("Premium Error:", error);
         return { error };
       }
     },
