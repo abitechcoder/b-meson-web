@@ -4,8 +4,6 @@ import tailwind from "@astrojs/tailwind";
 
 import icon from "astro-icon";
 
-import netlify from "@astrojs/netlify";
-
 // https://astro.build/config
 export default defineConfig({
   // site: "https://bmeson.netlify.app/",
@@ -16,6 +14,4 @@ export default defineConfig({
     }),
     icon(),
   ],
-
-  adapter: netlify(),
 });

@@ -6,7 +6,7 @@ import ContactUsBanner from "../components/ContactUsBanner.astro";
 ---
 
 <RootLayout
-  title="Contact Us | Cepticon Limited"
+  title="Contact Us | B-MESON Limited"
   description="B-MESON Limited is a leading recruitment and talent acquisition firm committed to connecting exceptional talent with ambitious organizations."
   keywords="Contact Recruitment Agency, Recruitment Services, Job Inquiries, Employment Opportunities, Hiring Assistance, Get In Touch, Request Talent, Submit Resume, Career Assistance, Employer Services, Recruitment Support, Job Vacancies Inquiry, Speak With Us, Reach Out"
 >
@@ -82,7 +82,7 @@ import ContactUsBanner from "../components/ContactUsBanner.astro";
           >
             Send a message
           </h2>
-          <form action="https://formspree.io/f/xjkveloz" method="POST">
+          <form action="" method="POST">
             <div class="mb-4">
               <label for="name" class="block text-primary font-bold mb-2"
                 >Name</label
@@ -96,9 +96,6 @@ import ContactUsBanner from "../components/ContactUsBanner.astro";
                 required
                 aria-required="true"
               />
-              <p class="error-message hidden" id="error-fullName">
-                Name is required.
-              </p>
             </div>
             <div class="mb-4">
               <label for="email" class="block font-bold text-primary mb-2"
@@ -121,14 +118,11 @@ import ContactUsBanner from "../components/ContactUsBanner.astro";
                 type="tel"
                 id="phone"
                 name="phone"
-                placeholder="Enter your phone number"
+                placeholder="e.g 08012345678 or 2348012345678"
                 class="input-field"
                 required
                 aria-required="true"
               />
-              <p class="error-message hidden" id="error-phone">
-                Phone Number is required.
-              </p>
             </div>
             <div class="mb-4">
               <label for="message" class="block font-bold text-primary mb-2"
@@ -164,13 +158,32 @@ import ContactUsBanner from "../components/ContactUsBanner.astro";
   </section>
 
   <script>
-    import { actions, isInputError } from "astro:actions";
     import { navigate } from "astro:transitions/client";
 
+    const webAppUrl = import.meta.env.PUBLIC_WEB_APP_URL;
     const form = document.querySelector("form");
     const submitButton = document.getElementById(
       "submitForm"
     ) as HTMLButtonElement;
+
+    async function submitForm(data) {
+      const url = `${webAppUrl}?sheet=ContactUs`;
+
+      try {
+        const response = await fetch(url, {
+          redirect: "follow",
+          method: "POST",
+          body: data,
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8",
+          },
+        });
+        return { data: response.ok };
+      } catch (error) {
+        // console.log("Error:", error);
+        return { error };
+      }
+    }
 
     form?.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -180,28 +193,14 @@ import ContactUsBanner from "../components/ContactUsBanner.astro";
       submitButton.textContent = "Submitting data...";
 
       const formData = new FormData(form);
-      const { error } = await actions.contact(formData);
-      const inputs = form.querySelectorAll(".input-field");
+      const values = Object.fromEntries(formData);
+      const body = JSON.stringify(values);
 
-      if (isInputError(error)) {
-        // Handle input errors
-        inputs.forEach((input) => {
-          const errorElement = document.getElementById(`error-${input.id}`);
-          if (error.fields[input.id]) {
-            const message = error.fields[input.id].join(", ");
-            errorElement.textContent = message;
-            errorElement.classList.remove("hidden");
-          } else {
-            errorElement.classList.add("hidden");
-            input.classList.remove("border-red-500");
-          }
-        });
-        // Re-enable the button if there's an error
-        submitButton.disabled = false;
-        submitButton.textContent = "Submit";
+      const result = await submitForm(body);
+      if (result.data) {
+        navigate("/thankyou");
       }
-
-      if (error) {
+      if (result.error) {
         submitButton.disabled = false;
         submitButton.textContent = "Submit";
         const errorMessageElement = document.getElementById("error-message");
@@ -210,9 +209,6 @@ import ContactUsBanner from "../components/ContactUsBanner.astro";
         setTimeout(() => {
           errorMessageElement.classList.add("hidden");
         }, 3000);
-      } else {
-        // Navigate to success page if no error
-        navigate("/thankyou");
       }
     });
   </script>

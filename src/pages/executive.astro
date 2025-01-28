@@ -9,7 +9,7 @@ import RootLayout from "../layouts/RootLayout.astro";
 >
   <main
     id="booster-form"
-    class="my-4 lg:my-10 w-full max-w-xl mx-auto border rounded-lg p-8 shadow-lg"
+    class="my-4 lg:mt-[100px] lg:mb-10 w-full max-w-xl mx-auto border rounded-lg p-8 shadow-lg"
     aria-label="Recruitment Form"
   >
     <h3
@@ -31,9 +31,6 @@ import RootLayout from "../layouts/RootLayout.astro";
           required
           aria-required="true"
         />
-        <p class="error-message hidden" id="error-fullName">
-          Full Name is required.
-        </p>
       </div>
       <div class="mb-4">
         <label for="companyName" class="block text-primary font-bold mb-2"
@@ -48,9 +45,6 @@ import RootLayout from "../layouts/RootLayout.astro";
           required
           aria-required="true"
         />
-        <p class="error-message hidden" id="error-companyName">
-          Company Name is required.
-        </p>
       </div>
       <div class="mb-4">
         <label for="email" class="block text-primary font-bold mb-2"
@@ -65,9 +59,6 @@ import RootLayout from "../layouts/RootLayout.astro";
           required
           aria-required="true"
         />
-        <p class="error-message hidden" id="error-email">
-          Valid Email is required.
-        </p>
       </div>
       <div class="mb-4">
         <label for="phone" class="block text-primary font-bold mb-2"
@@ -77,14 +68,11 @@ import RootLayout from "../layouts/RootLayout.astro";
           type="tel"
           id="phone"
           name="phone"
-          placeholder="Enter your phone number"
+          placeholder="e.g 08012345678 or 2348012345678"
           class="input-field"
           required
           aria-required="true"
         />
-        <p class="error-message hidden" id="error-phone">
-          Phone Number is required.
-        </p>
       </div>
       <div class="mb-4">
         <label for="location" class="block text-primary font-bold mb-2"
@@ -99,9 +87,6 @@ import RootLayout from "../layouts/RootLayout.astro";
           required
           aria-required="true"
         />
-        <p class="error-message hidden" id="error-location">
-          Location is required.
-        </p>
       </div>
       <div class="mb-4">
         <label for="position" class="block text-primary font-bold mb-2"
@@ -116,9 +101,6 @@ import RootLayout from "../layouts/RootLayout.astro";
           required
           aria-required="true"
         />
-        <p class="error-message hidden" id="error-position">
-          Position is required.
-        </p>
       </div>
 
       <div class="mb-4">
@@ -172,13 +154,33 @@ import RootLayout from "../layouts/RootLayout.astro";
   </main>
 
   <script>
-    import { actions, isInputError } from "astro:actions";
     import { navigate } from "astro:transitions/client";
 
+    const webAppUrl = import.meta.env.PUBLIC_WEB_APP_URL;
     const form = document.querySelector("form");
     const submitButton = document.getElementById(
       "submitForm"
     ) as HTMLButtonElement;
+
+    async function submitForm(data) {
+      const url = `${webAppUrl}?sheet=Premium`;
+
+      try {
+        const response = await fetch(url, {
+          redirect: "follow",
+          method: "POST",
+          body: data,
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8",
+          },
+        });
+        return { data: response.ok };
+      } catch (error) {
+        // console.log("Error:", error);
+        return { error };
+      }
+    }
+
 
     form?.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -189,29 +191,14 @@ import RootLayout from "../layouts/RootLayout.astro";
 
       const formData = new FormData(form);
       formData.set("package", "executive");
-      const { error } = await actions.premium(formData);
+      const values = Object.fromEntries(formData);
+      const body = JSON.stringify(values);
 
-      const inputs = form.querySelectorAll(".input-field");
-
-      if (isInputError(error)) {
-        // Handle input errors
-        inputs.forEach((input) => {
-          const errorElement = document.getElementById(`error-${input.id}`);
-          if (error.fields[input.id]) {
-            const message = error.fields[input.id].join(", ");
-            errorElement.textContent = message;
-            errorElement.classList.remove("hidden");
-          } else {
-            errorElement.classList.add("hidden");
-            input.classList.remove("border-red-500");
-          }
-        });
-        // Re-enable the button if there's an error
-        submitButton.disabled = false;
-        submitButton.textContent = "Submit";
+      const result = await submitForm(body);
+      if (result.data) {
+        navigate("/thankyou");
       }
-
-      if (error) {
+      if (result.error) {
         submitButton.disabled = false;
         submitButton.textContent = "Submit";
         const errorMessageElement = document.getElementById("error-message");
@@ -220,9 +207,6 @@ import RootLayout from "../layouts/RootLayout.astro";
         setTimeout(() => {
           errorMessageElement.classList.add("hidden");
         }, 3000);
-      } else {
-        // Navigate to success page if no error
-        navigate("/thankyou");
       }
     });
   </script>
