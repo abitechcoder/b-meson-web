@@ -19,5 +19,8 @@
   },
   "devDependencies": {
     "@iconify-json/mdi": "^1.2.2"
+  },
+  "optionalDependencies": {
+    "@rolldown/binding-win32-x64-msvc": "^1.0.0-rc.12"
   }
 }
