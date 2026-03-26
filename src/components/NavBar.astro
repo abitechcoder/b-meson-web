@@ -2,19 +2,15 @@
 import { Image } from "astro:assets";
 import Button from "./ui/Button.astro";
 import { Icon } from "astro-icon/components";
-import Logo from "../assets/images/Logo.png";
+import Logo from "../assets/images/logo-white.png";
 ---
 
-<header class="bg-white fixed top-0 left-0 z-20 w-full shadow-md">
+<header class="bg-white fixed top-0 left-0 z-50 w-full shadow-md">
   <nav
     class="container px-4 md:px-0 mx-auto flex justify-between items-center navbar"
   >
-    <a href="/" class="flex items-center">
-      <Image src={Logo} alt="B-MESON Limited Logo" class="w-[70px] h-[70px]" />
-      <p class="text-base font-inter font-black flex flex-col">
-        <span class="text-green-800 h-[20px]">B-MESON</span>
-        <span class="">LIMITED</span>
-      </p>
+    <a href="/" class="flex items-start">
+      <Image src={Logo} alt="B-MESON Limited Logo" class="h-[70px] w-[140px] object-contain" />
     </a>
     <div class="space-x-8 hidden lg:block">
       <a href="/" class="link">Home</a>

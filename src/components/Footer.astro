@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 
-import Logo from "../assets/images/logo-white.png";
+import Logo from "../assets/images/logo-dark.png";
 import Facebook from "../assets/images/facebook.svg";
 import Whatsapp from "../assets/images/whatsapp.svg";
 import LinkedIn from "../assets/images/linkedin.svg";
@@ -19,12 +19,8 @@ import Instagram from "../assets/images/instagram.svg";
           <Image
             src={Logo}
             alt="B-MESON Limited Logo"
-            class="w-[70px] h-[70px]"
+            class="w-[140px] h-[70px] object-contain"
           />
-          <p class="text-base font-inter font-black flex flex-col">
-            <span class="text-white h-[20px]">B-MESON</span>
-            <span class="text-white">LIMITED</span>
-          </p>
         </a>
         <p class="leading-8 font-inter text-justify text-sm">
           <span class="font-bold">B-MESON Limited</span> is a leading recruitment
@@ -92,27 +88,27 @@ import Instagram from "../assets/images/instagram.svg";
       </div>
     </div>
   </div>
-  <div class="bg-green-950">
+  <div class="bg-[#07101c]">
     <div
-      class="container mx-auto flex flex-col md:flex-row justify-between items-center p-8 gap-4 lg:gap-8"
+      class="container mx-auto flex flex-col md:flex-row justify-between items-center p-4 gap-4 lg:gap-8"
     >
       <p class="text-center md:text-left">
         <strong>&copy; 2025 B-MESON Limited.</strong> All rights reserved.
       </p>
       <div class="flex items-center gap-6">
         <a href="https://www.facebook.com/LagosJobConnect/" target="_blank"
-          ><Image src={Facebook} class="w-8 h-8" alt="Facebook icon" /></a
+          ><Image src={Facebook} class="w-6 h-6" alt="Facebook icon" /></a
         >
         <a href="https://wa.me/message/RN33VL3RKZAEO1" target="_blank"
-          ><Image src={Whatsapp} class="w-8 h-8" alt="Whatsapp icon" /></a
+          ><Image src={Whatsapp} class="w-6 h-6" alt="Whatsapp icon" /></a
         >
         <a
           href="https://www.linkedin.com/company/lagosjobconnect/?viewAsMember=true"
           target="_blank"
-          ><Image src={LinkedIn} class="w-8 h-8" alt="LinkedIn icon" /></a
+          ><Image src={LinkedIn} class="w-6 h-6" alt="LinkedIn icon" /></a
         >
         <a href="https://www.instagram.com/lagosjobconnect/" target="_blank"
-          ><Image src={Instagram} class="w-8 h-8" alt="Whatsapp icon" /></a
+          ><Image src={Instagram} class="w-6 h-6" alt="Whatsapp icon" /></a
         >
       </div>
     </div>

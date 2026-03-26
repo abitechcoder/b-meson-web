@@ -4,13 +4,15 @@ import RootLayout from "../layouts/RootLayout.astro";
 import SectionHeader from "../components/ui/SectionHeader.astro";
 import Partners from "../components/Partners.astro";
 import ContactUsBanner from "../components/ContactUsBanner.astro";
-import HeaderBanner from "../components/HeaderBanner.astro";
+import HeroCarousel from "../components/HeroCarousel.astro";
 import { Image } from "astro:assets";
 
 import BG from "../assets/images/bg2.jpg";
 import Mayowa from "../assets/images/team/mayowa.png";
 import Chioma from "../assets/images/team/chioma.png";
 import Recruiter from "../assets/images/team/recruiter.jpg";
+import Abiola from "../assets/images/team/abiola.jpeg";
+import ClientCandidateView from "../components/ClientCandidateView.astro";
 ---
 
 <RootLayout
@@ -18,7 +20,9 @@ import Recruiter from "../assets/images/team/recruiter.jpg";
   description="B-MESON Limited is a leading recruitment and talent acquisition firm committed to connecting exceptional talent with ambitious organizations."
   keywords="About Recruitment Agency, Best Recruitment Agency, Recruitment Firm, Talent Management, Hiring Managers, Hr Consulting, Employment Agency, Who We Are, Our Mission, Our Vision, Expertise In Recruitment, Recruitment Agency, Executive Search"
 >
-  <HeaderBanner route="About Us" />
+  <HeroCarousel />
+  <!-- Partners Section -->
+  <Partners />
   <section class="container mx-auto px-4 py-12">
     <!-- Introduction Section -->
     <section class="mb-12">
@@ -104,55 +108,67 @@ import Recruiter from "../assets/images/team/recruiter.jpg";
       </div>
     </section>
 
+    <ClientCandidateView />
+
     <!-- Team Section -->
-    <section class="mb-12">
+    <section class="my-12">
       <SectionHeader text="team" title="Meet our team" />
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white shadow-md shadow-primary rounded-lg relative">
+        <div class="bg-white border-primary border-4 rounded-lg relative">
           <Image
             src={Mayowa}
             alt="A picture of Adeosun Oluwatimilehin the CEO of B-MESON Limited"
-            class="w-full h-[400px] object-cover object-top"
+            class="w-full h-[400px] rounded-lg object-cover object-top"
           />
           <div
-            class="absolute bottom-4 left-4 right-4 text-base rounded-lg p-4 text-center bg-green-50 font-poppins"
+            class="absolute bottom-4 left-4 right-4 text-base rounded-lg p-4 text-center bg-primary font-poppins"
           >
-            <h4 class="font-bold text-primary">Adeosun Oluwatimilehin</h4>
-            <p class="text-black font-bold">CEO</p>
+            <h4 class="font-bold text-white">Adeosun Oluwatimilehin</h4>
+            <p class="text-secondary font-bold">CEO</p>
           </div>
         </div>
-        <div class="bg-white shadow-md shadow-primary rounded-lg relative">
+        <div class="bg-white border-primary border-4 rounded-lg relative">
           <Image
             src={Recruiter}
             alt="A picture of Ikponmwosa Eboigbe, the Talent Acquisition Manager at B-Meson Limited"
-            class="w-full h-[400px] object-cover object-center"
+            class="w-full h-[400px] rounded-lg object-cover object-center"
           />
           <div
-            class="absolute bottom-4 left-4 right-4 text-base rounded-lg p-4 text-center bg-green-50 font-poppins"
+            class="absolute bottom-4 left-4 right-4 text-base rounded-lg p-4 text-center bg-primary font-poppins"
           >
-            <h4 class="font-bold text-primary">Ikponmwosa Eboigbe</h4>
-            <p class="text-black font-bold">Talent Acquisition Manager</p>
+            <h4 class="font-bold text-white">Ikponmwosa Eboigbe</h4>
+            <p class="text-secondary font-bold">Talent Acquisition Manager</p>
           </div>
         </div>
-        <div class="bg-white shadow-md shadow-primary rounded-lg relative">
+        <div class="bg-white border-primary border-4 rounded-lg relative">
           <Image
             src={Chioma}
             alt="A picture of Chioma Oparah, the Business Development Manager at B-Meson Limited"
-            class="w-full h-[400px] object-cover object-center"
+            class="w-full h-[400px] rounded-lg object-cover object-center"
           />
           <div
-            class="absolute bottom-4 left-4 right-4 text-base rounded-lg p-4 text-center bg-green-50 font-poppins"
+            class="absolute bottom-4 left-4 right-4 text-base rounded-lg p-4 text-center bg-primary font-poppins"
           >
-            <h4 class="font-bold text-primary">Chioma Oparah</h4>
-            <p class="text-black font-bold">Business Development Manager</p>
+            <h4 class="font-bold text-white">Chioma Oparah</h4>
+            <p class="text-secondary font-bold">Business Development Manager</p>
+          </div>
+        </div>
+        <div class="bg-white border-primary border-4 rounded-lg relative">
+          <Image
+            src={Abiola}
+            alt="A picture of Abiola Adeosun, the Chief Technical Officer at B-Meson Limited"
+            class="w-full h-[400px] rounded-lg object-cover object-center"
+          />
+          <div
+            class="absolute bottom-4 left-4 right-4 text-base rounded-lg p-4 text-center bg-primary font-poppins"
+          >
+            <h4 class="font-bold text-white">Abiola Adeosun</h4>
+            <p class="text-secondary font-bold">Chief Technical Officer</p>
           </div>
         </div>
       </div>
     </section>
   </section>
-
-  <!-- Partners Section -->
-  <Partners />
 
   <!-- Call-to-Action Section -->
   <ContactUsBanner />

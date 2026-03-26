@@ -3,6 +3,8 @@ import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import NavBar from "../components/NavBar.astro";
 import "../base.css";
+import { Image } from "astro:assets";
+import Whatsapp from "../assets/images/whatsapp.svg";
 
 interface Props {
   title: string;
@@ -37,8 +39,15 @@ const { title, description, keywords } = Astro.props;
       <slot />
       <!-- your content is injected here -->
     </main>
+    <a
+      class="fixed bottom-16 right-4 z-50"
+      href="https://wa.me/message/RN33VL3RKZAEO1"
+      target="_blank"
+      ><div class="p-2 bg-green-300 rounded-full shadow-lg hover:shadow-2xl transition-shadow duration-300">
+        <Image src={Whatsapp} class="w-8 h-8 lg:w-12 lg:h-12" alt="Whatsapp icon" /></div></a
+    >
     <Footer />
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
       var $zoho = $zoho || {};
       $zoho.salesiq = $zoho.salesiq || {
         widgetcode:
@@ -54,6 +63,6 @@ const { title, description, keywords } = Astro.props;
       s.src = "https://salesiq.zoho.com/widget";
       t = d.getElementsByTagName("script")[0];
       t.parentNode.insertBefore(s, t);
-    </script>
+    </script> -->
   </body>
 </html>

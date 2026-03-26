@@ -1,0 +1,568 @@
+---
+import RootLayout from "../layouts/RootLayout.astro";
+
+// 1. Structured Package Information
+const packages = [
+  {
+    id: "support-plan",
+    name: "Support Plan",
+    amount: 250000,
+  },
+  {
+    id: "growth-plan",
+    name: "Growth Plan",
+    amount: 500000,
+  },
+  {
+    id: "embedded-partner",
+    name: "Embedded Partner",
+    amount: 1000000,
+  },
+];
+
+const addOns = [
+  {
+    id: "assessment-testing",
+    title: "Assessment & Testing",
+    price: 50000,
+    period: "per role",
+    features: [
+      "Psychometric assessments",
+      "Skills testing",
+      "Case studies or work simulations",
+    ],
+    icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z",
+  },
+  {
+    id: "employer-branding-content",
+    title: "Employer Branding Content",
+    price: 200000,
+    period: "per project",
+    features: [
+      "Job ad copywriting",
+      "Career page content",
+      "Employee value proposition (EVP)",
+    ],
+    icon: "M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z",
+  },
+  {
+    id: "recruitment-marketing",
+    title: "Recruitment Marketing",
+    price: 500000,
+    period: "per project",
+    features: [
+      "Targeted sourcing for hard-to-fill roles",
+      "LinkedIn & social media advertising",
+      "University or community events",
+    ],
+    icon: "M13 10V3L4 14h7v7l9-11h-7z",
+  },
+  {
+    id: "ats-dashboard-setup",
+    title: "ATS or Dashboard Setup",
+    price: 670000,
+    period: "₦600k setup + ₦70k/mo",
+    features: [
+      "Custom candidate tracking system",
+      "Real-time hiring dashboard",
+      "Integration with HR tools",
+    ],
+    icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+  },
+  {
+    id: "hiring-manager-training",
+    title: "Hiring Manager Training",
+    price: 200000,
+    period: "per project",
+    features: [
+      "Interview skills workshop",
+      "Unconscious bias training",
+      "Structured hiring best practices",
+    ],
+    icon: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z",
+  },
+];
+---
+
+<RootLayout
+  title="Checkout | B-MESON Limited"
+  keywords="Recruitment Service, Checkout, Subscription, B-MESON Limited"
+  description="Complete your recruitment service subscription with B-MESON Limited."
+>
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <h1 class="text-3xl font-bold mb-10 text-center">Service Checkout</h1>
+
+    <div class="grid lg:grid-cols-3 gap-10">
+      <!-- LEFT COLUMN -->
+      <div class="lg:col-span-2 space-y-8">
+        <!-- Add-ons -->
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h2 class="text-xl font-semibold mb-4">Select Package</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {
+              packages.map((item) => (
+                <div
+                  class="package-card group bg-white border border-gray-200 rounded-2xl p-6 transition-all duration-300 shadow-sm hover:shadow-md flex flex-col justify-between"
+                  data-index={item.id}
+                  data-price={item.amount}
+                  data-name={item.name}
+                >
+                  <div>
+                    <div class="flex gap-2 mb-4">
+                      <h3 class="font-bold text-md text-primary leading-tight w-1/2">
+                        {item.name}
+                      </h3>
+                      <div class="flex-1">
+                        <h3 class="text-xl font-bold text-right text-secondary">
+                          ₦{item.amount.toLocaleString()}
+                        </h3>
+                        <p class="text-sm text-slate-600 leading-snug text-right">
+                          per month
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 mb-4">
+                      <button
+                        type="button"
+                        class="select-package-btn flex-1 hover:cursor-pointer bg-white border-2 border-primary text-primary py-2 px-4 rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors duration-200"
+                      >
+                        Select package
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+        <!-- Client Info -->
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h2 class="text-xl font-semibold mb-4">Client Information</h2>
+
+          <div class="space-y-4">
+            <input
+              type="text"
+              id="full-name"
+              placeholder="Full Name"
+              class="w-full border rounded-lg p-3"
+            />
+
+            <input
+              type="email"
+              id="email"
+              placeholder="Email Address"
+              class="w-full border rounded-lg p-3"
+            />
+
+            <input
+              type="tel"
+              id="phone"
+              placeholder="Phone Number"
+              class="w-full border rounded-lg p-3"
+            />
+          </div>
+        </div>
+
+        <!-- Add-ons -->
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h2 class="text-xl font-semibold mb-4">Select Add-ons</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {
+              addOns.map((item) => (
+                <div
+                  class="addon-card group bg-white border border-gray-200 rounded-2xl p-6 transition-all duration-300 shadow-sm hover:shadow-md flex flex-col justify-between"
+                  data-index={item.id}
+                  data-price={item.price}
+                  data-name={item.title}
+                >
+                  <div>
+                    <div class="flex gap-2 mb-4">
+                      <h3 class="font-bold text-md text-primary leading-tight w-1/2">
+                        {item.title}
+                      </h3>
+                      <div class="flex-1">
+                        <h3 class="text-xl font-bold text-right text-secondary">
+                          ₦{item.price.toLocaleString()}
+                        </h3>
+                        <p class="text-sm text-slate-600 leading-snug text-right">
+                          {item.period}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 mb-4">
+                      <button
+                        type="button"
+                        class="select-addon-btn flex-1 bg-white border-2 border-primary text-primary py-2 px-4 rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors duration-200"
+                      >
+                        Select add-on
+                      </button>
+                      <button
+                        type="button"
+                        class="remove-addon-btn hidden text-red-500 hover:text-red-700 text-sm font-medium underline"
+                      >
+                        Remove add-on
+                      </button>
+                    </div>
+
+                    <hr />
+
+                    <ul class="space-y-3 mt-4">
+                      {item.features.map((feature) => (
+                        <li class="flex items-start gap-3 text-sm text-slate-600 leading-snug">
+                          <span>•</span>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- What Happens After -->
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h2 class="text-xl font-semibold mb-4">What Happens After Payment</h2>
+
+          <ol class="space-y-3 list-decimal list-inside text-gray-700">
+            <li>
+              <strong>Confirmation email</strong> — you will receive your receipt.
+            </li>
+
+            <li>
+              <strong>Recruitment kickoff</strong> — our team contacts you within
+              24 hours.
+            </li>
+
+            <li>
+              <strong>Candidate sourcing begins</strong> immediately.
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div>
+        <div class="bg-white p-6 rounded-xl shadow-lg sticky top-10">
+          <h2 class="text-xl font-semibold mb-6">Order Summary</h2>
+
+          <div class="space-y-3 text-gray-700">
+            <div class="flex justify-between">
+              <span id="package-name"></span>
+              <span id="package-price"></span>
+            </div>
+
+            <div id="addons-list"></div>
+
+            <hr />
+
+            <div class="flex justify-between">
+              <span>Subtotal</span>
+              <span id="subtotal"></span>
+            </div>
+
+            <div class="flex justify-between">
+              <span>VAT (7.5%)</span>
+              <span id="vat"></span>
+            </div>
+
+            <div class="flex justify-between font-bold text-lg">
+              <span>Total</span>
+              <span id="total"></span>
+            </div>
+          </div>
+
+          <div
+            id="payment-error"
+            class="hidden mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded text-sm"
+          >
+          </div>
+
+          <button
+            id="proceed-btn"
+            class="mt-6 w-full bg-secondary hover:bg-secondary/50 hover:cursor-pointer text-black py-3 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          >
+            <span id="btn-text">Proceed to Payment</span>
+            <div
+              id="btn-spinner"
+              class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"
+            >
+            </div>
+          </button>
+
+          <p class="text-sm text-gray-500 mt-4 text-center">
+            Secure payment powered by Flutterwave
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS Price Calculator -->
+
+  <script>
+    const addonCards = document.querySelectorAll(".addon-card");
+    const subtotalEl = document.getElementById("subtotal");
+    const vatEl = document.getElementById("vat");
+    const totalEl = document.getElementById("total");
+    const addonsList = document.getElementById("addons-list");
+    const packageNameEl = document.getElementById("package-name");
+    const packagePriceEl = document.getElementById("package-price");
+    const packageCards = document.querySelectorAll(".package-card");
+
+    // Dynamic Plan from URL (Client-side)
+    let currentPackagePrice = 0;
+    let currentPackageName = "";
+    let currentPackageId = "";
+    let selectedAddons = [];
+
+    function initPlanFromUrl() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const planKey = urlParams.get("plan")?.toLowerCase();
+      // console.log("planKey:", planKey);
+
+      packageCards.forEach((card: HTMLElement) => {
+        if (card.dataset.index === planKey) {
+          currentPackageId = card.dataset.index;
+          currentPackageName = card.dataset.name;
+          currentPackagePrice = parseInt(card.dataset.price);
+
+          if (packageNameEl) packageNameEl.textContent = currentPackageName;
+          if (packagePriceEl)
+            packagePriceEl.textContent =
+              "₦" + currentPackagePrice.toLocaleString();
+        }
+      });
+
+      updateTotal();
+    }
+
+    function updateTotal() {
+      let addonsTotal = 0;
+      if (addonsList) addonsList.innerHTML = "";
+
+      selectedAddons.forEach((addon) => {
+        addonsTotal += addon.price;
+        if (addonsList) {
+          const item = document.createElement("div");
+          item.className = "flex justify-between text-sm";
+          item.innerHTML = `
+                <span>${addon.name}</span>
+                <span>+₦${addon.price.toLocaleString()}</span>
+              `;
+          addonsList.appendChild(item);
+        }
+      });
+
+      const subtotal = currentPackagePrice + addonsTotal;
+      const vat = subtotal * 0.075;
+      const total = subtotal + vat;
+
+      if (subtotalEl) subtotalEl.textContent = "₦" + subtotal.toLocaleString();
+      if (vatEl) vatEl.textContent = "₦" + vat.toLocaleString();
+      if (totalEl) totalEl.textContent = "₦" + total.toLocaleString();
+
+      return total;
+    }
+
+    packageCards.forEach((card: HTMLElement) => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const planKey = urlParams.get("plan")?.toLowerCase();
+      const selectBtn: HTMLButtonElement = card.querySelector(".select-package-btn");
+
+      selectBtn.addEventListener("click", () => {
+        window.location.href = `/checkout?plan=${card.dataset.index}`;
+      });
+
+      if (planKey === card.dataset.index) {
+        selectBtn.disabled = true;
+        selectBtn.textContent = "Selected";
+        selectBtn.classList.remove(
+          "border-primary",
+          "text-primary",
+          "hover:bg-primary",
+          "bg-white",
+        );
+        selectBtn.classList.add(
+          "bg-green-500",
+          "text-white",
+          "border-green-500",
+        );
+      }
+    });
+
+    // Add-on selection logic
+    addonCards.forEach((card: HTMLElement) => {
+      const selectBtn: HTMLButtonElement = card.querySelector(".select-addon-btn");
+      const removeBtn: HTMLButtonElement = card.querySelector(".remove-addon-btn");
+      const price = parseInt(card.dataset.price);
+      const name = card.dataset.name;
+      const index = card.dataset.index;
+
+      selectBtn.addEventListener("click", () => {
+        // Add to state
+        selectedAddons.push({ index, name, price });
+
+        // Update UI state
+        card.classList.remove("border-gray-200");
+        card.classList.add("border-green-500", "bg-green-50/30");
+
+        selectBtn.disabled = true;
+        selectBtn.textContent = "Selected";
+        selectBtn.classList.remove(
+          "border-primary",
+          "text-primary",
+          "hover:bg-primary",
+          "bg-white",
+        );
+        selectBtn.classList.add(
+          "bg-green-500",
+          "text-white",
+          "border-green-500",
+        );
+
+        removeBtn.classList.remove("hidden");
+
+        updateTotal();
+      });
+
+      removeBtn.addEventListener("click", () => {
+        // Remove from state
+        selectedAddons = selectedAddons.filter((a) => a.index !== index);
+
+        // Reset UI state
+        card.classList.remove("border-green-500", "bg-green-50/30");
+        card.classList.add("border-gray-200");
+
+        selectBtn.disabled = false;
+        selectBtn.textContent = "Select add-on";
+        selectBtn.classList.add(
+          "border-primary",
+          "text-primary",
+          "hover:bg-primary",
+        );
+        selectBtn.classList.remove(
+          "bg-green-500",
+          "text-white",
+          "border-green-500",
+        );
+
+        removeBtn.classList.add("hidden");
+
+        updateTotal();
+      });
+    });
+
+    initPlanFromUrl();
+
+    // Validation on Proceed to Payment
+    const proceedBtn: HTMLButtonElement = document.getElementById("proceed-btn") as HTMLButtonElement;
+    const btnText: HTMLElement = document.getElementById("btn-text") as HTMLElement;
+    const btnSpinner: HTMLElement = document.getElementById("btn-spinner") as HTMLElement;
+    const paymentError: HTMLElement = document.getElementById("payment-error") as HTMLElement;
+    const fullNameInput: HTMLInputElement = document.getElementById("full-name") as HTMLInputElement;
+    const emailInput: HTMLInputElement = document.getElementById("email") as HTMLInputElement;
+    const phoneInput: HTMLInputElement = document.getElementById("phone") as HTMLInputElement;
+
+    function showError(msg) {
+      if (paymentError) {
+        paymentError.textContent = msg;
+        paymentError.classList.remove("hidden");
+      }
+    }
+
+    function hideError() {
+      if (paymentError) {
+        paymentError.classList.add("hidden");
+      }
+    }
+
+    function setBtnLoading(isLoading) {
+      if (proceedBtn) proceedBtn.disabled = isLoading;
+      if (btnText)
+        btnText.textContent = isLoading
+          ? "Processing..."
+          : "Proceed to Payment";
+      if (btnSpinner) {
+        if (isLoading) btnSpinner.classList.remove("hidden");
+        else btnSpinner.classList.add("hidden");
+      }
+    }
+
+    if (proceedBtn) {
+      proceedBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        hideError();
+
+        const name = fullNameInput?.value.trim() || "";
+        const email = emailInput?.value.trim() || "";
+        const phone = phoneInput?.value.trim() || "";
+
+        // Basic validation
+        if (!name || !email || !phone) {
+          showError("Please fill in all fields.");
+          return;
+        }
+
+        // Email format validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          showError("Please enter a valid email address.");
+          return;
+        }
+
+        setBtnLoading(true);
+
+        const payment_data = {
+          name: name,
+          email: email,
+          phone: phone,
+          packageId: currentPackageId,
+          addOnIds: selectedAddons.map((a) => a.index), // or a.id if available
+        };
+
+        try {
+          const response = await fetch(
+            `${import.meta.env.PUBLIC_API_URL}/api/orders/create`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(payment_data),
+            },
+          );
+
+          const result = await response.json();
+
+          // console.log(result);
+
+          if (!response.ok) {
+            // Server returned a 4xx/5xx — show the error message from the API
+            showError(
+              result.message || "Something went wrong. Please try again.",
+            );
+            setBtnLoading(false);
+            return;
+          }
+
+          // If the API returns a Flutterwave payment link, redirect the user
+          if (result.payment_link) {
+            window.location.href = result.payment_link;
+          }
+        } catch (error) {
+          // Network failure or JSON parse error
+          showError(
+            "Unable to reach payment server. Please check your connection.",
+          );
+          setBtnLoading(false);
+        }
+      });
+    }
+  </script>
+</RootLayout>

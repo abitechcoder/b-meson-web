@@ -4,6 +4,10 @@ import HeaderBanner from "../components/HeaderBanner.astro";
 import Partners from "../components/Partners.astro";
 import WhatWeDo from "../components/WhatWeDo.astro";
 import RootLayout from "../layouts/RootLayout.astro";
+import PricingTable from "../components/PricingTable.astro";
+import Addons from "../components/Addons.astro";
+import HowItWorks from "../components/HowItWorks.astro";
+import FAQ from "../components/FAQ.astro";
 ---
 
 <RootLayout
@@ -13,6 +17,10 @@ import RootLayout from "../layouts/RootLayout.astro";
 >
   <HeaderBanner route="Our Packages" />
   <WhatWeDo />
+  <PricingTable />
+  <Addons />
+  <HowItWorks />
   <Partners />
-  <ContactUsBanner />
+  <FAQ />
+  <ContactUsBanner title="Have a different question?" description="We're here to help you with your hiring needs. Contact us today!" />
 </RootLayout>

@@ -9,8 +9,8 @@ export default {
     },
     extend: {
       colors: {
-        primary: "#386d56",
-        secondary: "#aba067",
+        primary: "#0a1628",
+        secondary: "#d4a017",
       },
       animation: {
         scroll: "scroll 30s linear infinite",

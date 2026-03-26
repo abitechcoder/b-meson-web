@@ -1,39 +1,42 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-inter: "Inter", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+  --font-anton: "Anton", sans-serif;
+
+  --color-primary: #0a1628;
+  --color-secondary: #d4a017;
+
+  --animate-scroll: scroll 30s linear infinite;
+
+  @keyframes scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(calc(-250px * 8)); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
 
 @layer base {
   .link {
     @apply text-gray-700 hover:text-green-800 hover:font-bold font-inter;
   }
-
   .active-link {
     @apply text-green-800 font-bold;
   }
-
   .service-icon {
     @apply w-[50px] h-[50px];
   }
-
   .team-photo {
     width: 80px;
     height: 80px;
     object-fit: cover;
     border-radius: 50%;
   }
-
-  /* Custom animations */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
   .fade-in {
     animation: fadeIn 1s ease-in-out;
   }

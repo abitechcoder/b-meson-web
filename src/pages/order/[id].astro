@@ -1,0 +1,294 @@
+---
+import RootLayout from "../../layouts/RootLayout.astro";
+export const prerender = false;
+---
+
+<RootLayout
+  title="Payment Successful | B-MESON Limited"
+  keywords="Payment Confirmation, Recruitment Service, B-MESON Limited"
+  description="Your payment has been confirmed. B-MESON Limited will be in touch shortly."
+>
+  <!-- Loading State -->
+  <div id="loading-state" class="min-h-screen flex items-center justify-center">
+    <div class="flex flex-col items-center gap-4">
+      <div class="w-10 h-10 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+      <p class="text-gray-500 text-sm">Fetching your order...</p>
+    </div>
+  </div>
+
+  <!-- Error State -->
+  <div id="error-state" class="hidden min-h-screen items-center justify-center px-6">
+    <div class="text-center max-w-md">
+      <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </div>
+      <h1 class="text-2xl font-bold text-gray-800 mb-2">Order Not Found</h1>
+      <p class="text-gray-500 mb-6">We couldn't find this order. It may have expired or the link is incorrect.</p>
+      <a href="/" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
+        Back to Home
+      </a>
+    </div>
+  </div>
+
+  <!-- Success State -->
+  <div id="success-state" class="hidden max-w-3xl mx-auto px-6 py-16">
+
+    <!-- Header -->
+    <div class="text-center mb-10">
+      <div class="relative inline-flex items-center justify-center w-20 h-20 mb-5">
+        <div class="absolute inset-0 bg-green-100 rounded-full animate-ping opacity-30"></div>
+        <div class="relative w-20 h-20 bg-green-500 rounded-full flex items-center justify-center shadow-lg">
+          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+          </svg>
+        </div>
+      </div>
+
+      <h1 class="text-3xl font-bold text-gray-900 mb-2">Payment Successful!</h1>
+      <p class="text-gray-500">A confirmation receipt has been sent to your email.</p>
+    </div>
+
+    <!-- Order Card -->
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-6">
+
+      <!-- Card Header -->
+      <div class="bg-gradient-to-r from-orange-500 to-orange-400 px-6 py-4 flex items-center justify-between">
+        <span class="text-white font-semibold text-sm uppercase tracking-wide">Order Confirmation</span>
+        <span id="order-status" class="bg-white text-green-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide"></span>
+      </div>
+
+      <!-- Order Details -->
+      <div class="p-6 space-y-5">
+
+        <!-- Customer Info -->
+        <div>
+          <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Customer</h2>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <div>
+              <p class="text-xs text-gray-400 mb-0.5">Name</p>
+              <p id="order-name" class="text-gray-800 font-medium text-sm"></p>
+            </div>
+            <div>
+              <p class="text-xs text-gray-400 mb-0.5">Email</p>
+              <p id="order-email" class="text-gray-800 font-medium text-sm break-all"></p>
+            </div>
+            <div>
+              <p class="text-xs text-gray-400 mb-0.5">Phone</p>
+              <p id="order-phone" class="text-gray-800 font-medium text-sm"></p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="border-gray-100"/>
+
+        <!-- Package -->
+        <div>
+          <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Package</h2>
+          <div class="flex items-center justify-between bg-orange-50 border border-orange-100 rounded-xl px-4 py-3">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                </svg>
+              </div>
+              <span id="order-package" class="font-semibold text-gray-800 text-sm"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add-ons -->
+        <div id="addons-section" class="hidden">
+          <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Add-ons</h2>
+          <ul id="addons-list" class="space-y-2"></ul>
+        </div>
+
+        <hr class="border-gray-100"/>
+
+        <!-- Pricing Breakdown -->
+        <div>
+          <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Pricing</h2>
+          <div class="space-y-2">
+            <div class="flex justify-between text-sm text-gray-600">
+              <span>Subtotal</span>
+              <span id="order-subtotal"></span>
+            </div>
+            <div class="flex justify-between text-sm text-gray-600">
+              <span>VAT (7.5%)</span>
+              <span id="order-vat"></span>
+            </div>
+            <div class="flex justify-between font-bold text-gray-900 text-base pt-2 border-t border-gray-100">
+              <span>Total Paid</span>
+              <span id="order-total" class="text-orange-500"></span>
+            </div>
+          </div>
+        </div>
+
+        <hr class="border-gray-100"/>
+
+        <!-- Order Meta -->
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <p class="text-xs text-gray-400 mb-0.5">Order ID</p>
+            <p id="order-id" class="text-gray-600 text-xs font-mono break-all"></p>
+          </div>
+          <div>
+            <p class="text-xs text-gray-400 mb-0.5">Date</p>
+            <p id="order-date" class="text-gray-600 text-sm"></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- What Happens Next -->
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+      <h2 class="text-base font-semibold text-gray-800 mb-4">What Happens Next</h2>
+      <ol class="space-y-3">
+        <li class="flex items-start gap-3">
+          <span class="w-6 h-6 bg-orange-100 text-orange-500 rounded-full text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">1</span>
+          <div>
+            <p class="text-sm font-medium text-gray-800">Confirmation Email</p>
+            <p class="text-xs text-gray-500">Your receipt has been sent to your inbox.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="w-6 h-6 bg-orange-100 text-orange-500 rounded-full text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">2</span>
+          <div>
+            <p class="text-sm font-medium text-gray-800">Recruitment Kickoff</p>
+            <p class="text-xs text-gray-500">Our team will contact you within 24 hours.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="w-6 h-6 bg-orange-100 text-orange-500 rounded-full text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">3</span>
+          <div>
+            <p class="text-sm font-medium text-gray-800">Candidate Sourcing Begins</p>
+            <p class="text-xs text-gray-500">We start sourcing candidates immediately after kickoff.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <!-- Actions -->
+    <div class="flex flex-col sm:flex-row gap-3">
+      <button
+        onclick="window.print()"
+        class="flex-1 flex items-center justify-center gap-2 border border-gray-200 hover:border-gray-300 text-gray-700 font-semibold py-3 px-5 rounded-xl transition-colors text-sm"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+        </svg>
+        Print Receipt
+      </button>
+      <a
+        href="/"
+        class="flex-1 flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-5 rounded-xl transition-colors text-sm"
+      >
+        Back to Home
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+
+  <script>
+    const packageNames = {
+      "support-plan": "Support Plan",
+      "growth-plan": "Growth Plan",
+      "embedded-partner": "Embedded Partner"
+    }
+
+    const addonNames = {
+      "assessment-testing": "Assessment & Testing",
+      "employer-branding-content": "Employer Branding Content",
+      "recruitment-marketing": "Recruitment Marketing",
+      "ats-dashboard-setup": "ATS or Dashboard Setup",
+      "hiring-manager-training": "Hiring Manager Training"
+    }
+
+    const loadingEl = document.getElementById("loading-state")
+    const errorEl = document.getElementById("error-state")
+    const successEl = document.getElementById("success-state")
+
+    function formatCurrency(amount) {
+      return "₦" + Number(amount).toLocaleString("en-NG", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+    }
+
+    function formatDate(dateStr) {
+      return new Date(dateStr).toLocaleDateString("en-NG", {
+        year: "numeric", month: "long", day: "numeric",
+        hour: "2-digit", minute: "2-digit"
+      })
+    }
+
+    async function loadOrder() {
+      const orderId = window.location.pathname.split("/").pop();
+
+      // console.log("Order Id:", orderId);
+
+      try {
+        const response = await fetch(`${import.meta.env.PUBLIC_API_URL}/api/orders/${orderId}`)
+        
+        if (!response.ok) throw new Error("Order not found")
+
+        const order = await response.json()
+
+        // Populate fields
+        document.getElementById("order-name").textContent = order.name
+        document.getElementById("order-email").textContent = order.email
+        document.getElementById("order-phone").textContent = order.phone
+        document.getElementById("order-package").textContent = packageNames[order.packageId] || order.packageId
+        document.getElementById("order-subtotal").textContent = formatCurrency(order.subtotal)
+        document.getElementById("order-vat").textContent = formatCurrency(order.vat)
+        document.getElementById("order-total").textContent = formatCurrency(order.total)
+        document.getElementById("order-id").textContent = order.id
+        document.getElementById("order-date").textContent = formatDate(order.createdAt)
+
+        // Status badge
+        const statusEl = document.getElementById("order-status")
+        statusEl.textContent = order.status
+        if (order.status === "paid") {
+          statusEl.classList.add("text-green-600")
+        } else if (order.status === "pending") {
+          statusEl.classList.replace("text-green-600", "text-yellow-600")
+        } else {
+          statusEl.classList.replace("text-green-600", "text-red-600")
+        }
+
+        // Add-ons
+        if (order.addOns && order.addOns.length > 0) {
+          const addonsSection = document.getElementById("addons-section")
+          const addonsList = document.getElementById("addons-list")
+          addonsSection.classList.remove("hidden")
+
+          order.addOns.forEach(addonId => {
+            const li = document.createElement("li")
+            li.className = "flex items-center gap-2 text-sm text-gray-700"
+            li.innerHTML = `
+              <span class="w-4 h-4 bg-green-100 rounded-full flex items-center justify-center shrink-0">
+                <svg class="w-2.5 h-2.5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                </svg>
+              </span>
+              ${addonNames[addonId] || addonId}
+            `
+            addonsList.appendChild(li)
+          })
+        }
+
+        // Show success
+        loadingEl.classList.add("hidden")
+        successEl.classList.remove("hidden")
+
+      } catch (err) {
+        loadingEl.classList.add("hidden")
+        errorEl.classList.remove("hidden")
+      }
+    }
+
+    loadOrder()
+  </script>
+</RootLayout>

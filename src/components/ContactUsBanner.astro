@@ -1,20 +1,21 @@
 ---
 import Button from "./ui/Button.astro";
+
+const {title, description} = Astro.props;
+
 ---
 
-<section class="bg-green-50 py-20 px-4 lg:px-0">
+<section class="bg-gray-50 py-20 px-4 lg:px-0">
   <div
     class="rounded-lg container mx-auto grid place-items-center gap-4 md:gap-8 bg-primary text-white px-4 lg:px-8 py-10"
   >
-    <div class="space-y-4">
-      <h2 class="text-2xl lg:text-5xl font-bold font-poppins text-center">
-        Let's take your Hiring Worries off you!
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-2xl lg:text-5xl font-bold font-poppins text-center mb-4">
+        {title ? title : "Let's take your Hiring Worries off you!"}
       </h2>
-      <p class="font-poppins font-light text-center w-full md:w-3/4 mx-auto">
-        <span class="font-bold">Need talent?</span> Our experts can help! save time
-        and resources. Schedule a quick call to build your dream team.
-      </p>
+      <p class="font-poppins font-light text-center w-full mx-auto">
+        {description ? description : "Our team of experts is ready to help you find the perfect talent for your organization. Schedule a call with us today and let's discuss how we can support your hiring needs."}
     </div>
-    <Button variant="secondary" href="/premium">Schedule a call</Button>
+    <Button variant="secondary" target="_blank" href="https://calendly.com/info-bmeson">Schedule a call</Button>
   </div>
 </section>

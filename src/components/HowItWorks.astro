@@ -1,0 +1,246 @@
+---
+// HowItWorks.astro — Tailwind CSS only, steps rendered from array
+
+const steps = [
+  {
+    number: "01",
+    tag: "Week 0",
+    title: "Discovery Call",
+    description:
+      "A focused 30-minute conversation to understand your goals, challenges, and opportunities. No fluff — just clarity on where you are and where you want to be.",
+    meta: ["📅 30 minutes", "🎯 Goal alignment"],
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/>
+    </svg>`,
+    accent: false,
+  },
+  {
+    number: "02",
+    tag: "Within 24 hrs",
+    title: "Custom Proposal",
+    description:
+      "We craft a tailored strategy document outlining our recommended approach, deliverables, timeline, and investment — ready for your review within a day.",
+    meta: ["⚡ 24-hour turnaround", "📄 Full scope breakdown"],
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/>
+    </svg>`,
+    accent: false,
+  },
+  {
+    number: "03",
+    tag: "Day 1–7",
+    title: "Onboarding",
+    description:
+      "Access, assets, and alignment. We get logins, brand materials, and data — then align your team with ours so we can hit the ground running from day one.",
+    meta: ["🔐 Systems access", "🤝 Team kickoff call"],
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/>
+    </svg>`,
+    accent: false,
+  },
+  {
+    number: "04",
+    tag: "Ongoing",
+    title: "Weekly Execution",
+    description:
+      "Consistent, high-quality output every week. Campaigns run, content ships, optimizations happen. Stay informed with async updates and a weekly check-in.",
+    meta: ["🔄 Weekly sprints", "💬 Async updates"],
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
+    </svg>`,
+    accent: false,
+  },
+  {
+    number: "05",
+    tag: "Monthly",
+    title: "Monthly Reporting",
+    description:
+      "A comprehensive performance report every month — clear metrics, insights, wins, learnings, and the strategic focus for the month ahead. Always data-driven.",
+    meta: ["📊 KPI dashboard", "🧠 Strategic next steps"],
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"/>
+    </svg>`,
+    accent: false,
+  },
+  {
+    number: "06",
+    tag: "End of Term",
+    title: "Renewal & Growth",
+    description:
+      "We review everything together, celebrate the wins, and plan the next chapter. Most clients expand their engagement — because results earn trust.",
+    meta: ["🚀 Growth review", "🔁 Expanded partnership"],
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/>
+    </svg>`,
+    accent: true,
+  },
+];
+---
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Outfit:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+  rel="stylesheet"
+/>
+
+<section class="bg-green-50 py-24 px-6 text-black overflow-hidden">
+  <div class="max-w-5xl mx-auto">
+
+    <!-- ── Section Header ── -->
+    <div class="text-center mb-20">
+      <span class="inline-block text-[10px] tracking-[0.22em] uppercase text-white bg-secondary border border-secondary px-4 py-2 rounded-full mb-6">
+        The Process
+      </span>
+      <h2 class="font-['Cormorant_Garamond',serif] text-5xl md:text-6xl font-semibold leading-tight mb-5 text-black">
+        How We Work <em class="italic text-primary">Together</em>
+      </h2>
+      <p class="text-black text-base font-light leading-relaxed max-w-md mx-auto">
+        From first conversation to long-term growth — a clear, structured journey designed around your success.
+      </p>
+    </div>
+
+    <!-- ── Steps ── -->
+    <ol class="relative flex flex-col gap-5">
+
+      <!-- Vertical connector line -->
+      <div
+        class="absolute left-[27px] top-7 bottom-7 w-px bg-gradient-to-b from-emerald-400/70 via-primary/60 to-transparent pointer-events-none"
+        aria-hidden="true"
+      ></div>
+
+      {steps.map((step, i) => (
+        <li
+          class="group flex items-start gap-5 step-item"
+          style={`animation-delay: ${i * 90}ms`}
+        >
+          <!-- Marker -->
+          <div
+            class={[
+              "relative z-10 flex-shrink-0 w-[54px] h-[54px] rounded-full flex items-center justify-center border transition-all duration-300",
+              step.accent
+                ? "bg-secondary border-secondary shadow-[0_0_28px_rgba(52,211,153,0.45)]"
+                : "bg-primary border-primary",
+            ].join(" ")}
+          >
+            <span
+              class={[
+                "text-[11px] font-medium tracking-wider",
+                step.accent ? "text-white" : "text-white",
+              ].join(" ")}
+            >
+              {step.number}
+            </span>
+            <!-- Ripple ring -->
+            <span class="absolute inset-[-6px] rounded-full border border-emerald-400/0 group-hover:border-emerald-400/20 transition-all duration-500 group-hover:scale-110 pointer-events-none"></span>
+          </div>
+
+          <!-- Card -->
+          <div
+            class={[
+              "flex-1 rounded-2xl border p-6 transition-all duration-300",
+              step.accent
+                ? "bg-primary shadow-[0_8px_40px_rgba(52,211,153,0.2)]"
+                : "bg-white border-green-500",
+            ].join(" ")}
+          >
+            <div class="flex flex-col lg:flex-row items-start gap-4">
+
+              <!-- Icon -->
+              <div
+                class={[
+                  "flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center mt-0.5",
+                  step.accent ? "bg-white text-black" : "bg-secondary text-white",
+                ].join(" ")}
+              >
+                <Fragment set:html={step.icon} />
+              </div>
+
+              <!-- Text body -->
+              <div class="flex-1 min-w-0">
+
+                <!-- Tag -->
+                <span
+                  class={[
+                    "inline-block text-[9px] tracking-[0.18em] uppercase px-2.5 py-1 rounded-full mb-2.5",
+                    step.accent
+                      ? "bg-white text-black font-bold"
+                      : "bg-primary text-white",
+                  ].join(" ")}
+                >
+                  {step.tag}
+                </span>
+
+                <!-- Title -->
+                <h3
+                  class={[
+                    "text-2xl font-semibold mb-2 leading-tight",
+                    step.accent ? "text-white" : "text-black",
+                  ].join(" ")}
+                >
+                  {step.title}
+                </h3>
+
+                <!-- Description -->
+                <p
+                  class={[
+                    "text-sm leading-relaxed mb-3 font-light",
+                    step.accent ? "text-white" : "text-black",
+                  ].join(" ")}
+                >
+                  {step.description}
+                </p>
+
+                <!-- Meta pills -->
+                <div class="flex flex-wrap gap-2">
+                  {step.meta.map((m) => (
+                    <span
+                      class={[
+                        "text-[10px] tracking-wide px-2.5 py-1 rounded-lg",
+                        step.accent
+                          ? "bg-white text-black"
+                          : "bg-primary text-white",
+                      ].join(" ")}
+                    >
+                      {m}
+                    </span>
+                  ))}
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <!-- ── CTA ── -->
+    <div class="mt-16 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a
+        href="/premium"
+        class="inline-flex items-center gap-2 bg-primary text-white font-medium text-sm px-7 py-3.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgba(52,211,153,0.35)] active:translate-y-0"
+      >
+        Book Your Discovery Call
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+        </svg>
+      </a>
+      <span class="text-[11px] text-black tracking-widest uppercase">
+        Free · No obligation · 30 min
+      </span>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .step-item {
+    opacity: 0;
+    animation: fadeUp 0.45s ease forwards;
+  }
+</style>

@@ -1,0 +1,79 @@
+---
+// FAQ.astro
+const faqs = [
+  {
+    question: "Why should we pay if we do not hire?",
+    answer: `<p>Think about it this way: companies pay lawyers monthly even without lawsuits, and IT support monthly even without crashes. Why? <strong>Because readiness has value.</strong></p>
+             <p class="mt-2">With our service, even in months where you do not hire, we are:</p>
+             <ul class="list-disc ml-5 mt-2 space-y-1">
+                <li>Keeping talent warm and engaged</li>
+                <li>Testing the market for salary and availability</li>
+                <li>Vetting candidates into pools</li>
+                <li>Preparing for your next hire</li>
+             </ul>
+             <p class="mt-2 font-medium">When you do need to hire, there is no panic, no delay, and no starting from zero.</p>
+             <p class="mt-2">Also, consider that one bad hire costs <strong>₦550k to ₦700k</strong> in lost productivity. Our fee is a fraction of that risk.</p>`
+  },
+  {
+    question: "We already have HR, why do we need you?",
+    answer: "We do not replace HR; we <strong>augment</strong> them. Your HR team owns culture and employee management. We own market access and recruitment execution. Most HR teams are overloaded with payroll and compliance—recruitment becomes a side job, and quality drops. We take that load off so they can focus on managing your people."
+  },
+  {
+    question: "Can you guarantee hires?",
+    answer: "We guarantee a professional process and quality candidates, but we cannot guarantee retention because we don’t control your internal culture or management. However, if a candidate leaves, we don’t panic—hiring continues under the same retainer, so you are never starting from zero."
+  },
+  {
+    question: "This is too expensive.",
+    answer: "One bad hire costs <strong>₦550k–₦700k</strong>. If you make just 2–3 bad hires a year, you’re losing over <strong>₦1.5M</strong>. Compare our cost to a full-time senior recruiter (₦200k–₦300k salary + benefits). You're getting senior expertise without the overhead."
+  },
+  {
+    question: "What if we want to pause for a few months?",
+    answer: "Real value emerges over time as we build your talent pipeline. While we require a minimum commitment, we are flexible if business needs change. Options include pausing active sourcing while maintaining your pool, reducing scope, or crediting unused months toward future service."
+  },
+  {
+    question: "We have used agencies before and had bad experiences.",
+    answer: "Contingency agencies only get paid when you hire, so they rush and pressure you. Our model is different. We are paid to execute <strong>quality recruitment</strong>, not to force hires. We use Hiring Alignment Documents from day one so there are no surprises."
+  }
+];
+---
+
+<section class="bg-green-50 py-20 px-4">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-4">Common Questions</h2>
+      <p class="text-slate-600">Everything you need to know about our partnership model.</p>
+    </div>
+
+    <div class="space-y-4">
+      {faqs.map((faq) => (
+        <details class="group bg-white border border-green-100 rounded-2xl p-2 shadow-sm [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer p-4 select-none">
+            <h3 class="text-lg font-bold text-slate-800 group-open:text-green-600 transition-colors">
+              {faq.question}
+            </h3>
+            <span class="ml-4 flex-shrink-0 transition duration-300 group-open:-rotate-180">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </span>
+          </summary>
+          <div class="px-4 pb-4 pt-2 text-black leading-relaxed border-t border-green-50 mt-2">
+            <Fragment set:html={faq.answer} />
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Optional: Smooth transition for opening (Experimental) */
+  details[open] summary ~ * {
+    animation: sweep .3s ease-in-out;
+  }
+
+  @keyframes sweep {
+    0%    {opacity: 0; transform: translateY(-10px)}
+    100%  {opacity: 1; transform: translateY(0)}
+  }
+</style>
