@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <title>Admin Dashboard</title>
+    </head>
+
+    <body class="bg-gray-50 p-8">
+        <h1 class="text-3xl font-bold mb-8">Admin Analytics Dashboard</h1>
+
+        <!-- METRICS -->
+        <div class="grid md:grid-cols-4 gap-6 mb-10">
+            <div class="bg-white p-6 rounded-xl shadow">
+                <p class="text-gray-500">Total Orders</p>
+                <h2 id="totalOrders" class="text-2xl font-bold">-</h2>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow">
+                <p class="text-gray-500">Paid Orders</p>
+                <h2 id="paidOrders" class="text-2xl font-bold text-green-600">
+                    -
+                </h2>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow">
+                <p class="text-gray-500">Abandoned</p>
+                <h2
+                    id="abandonedOrders"
+                    class="text-2xl font-bold text-yellow-600"
+                >
+                    -
+                </h2>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow">
+                <p class="text-gray-500">Revenue</p>
+                <h2 id="revenue" class="text-2xl font-bold text-blue-600">-</h2>
+            </div>
+        </div>
+
+        <!-- CONVERSION -->
+        <div class="bg-white p-6 rounded-xl shadow mb-10">
+            <p class="text-gray-500">Conversion Rate</p>
+            <h2 id="conversionRate" class="text-3xl font-bold">-</h2>
+        </div>
+
+        <!-- RECENT ORDERS -->
+        <div class="bg-white p-6 rounded-xl shadow">
+            <h2 class="text-xl font-semibold mb-4">Recent Orders</h2>
+
+            <table class="w-full text-left">
+                <thead>
+                    <tr class="border-b">
+                        <th class="py-2">Order ID</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+
+                <tbody id="ordersTable"></tbody>
+            </table>
+        </div>
+
+        <script>
+            async function loadAnalytics() {
+                const res = await fetch(`${import.meta.env.PUBLIC_API_URL}/api/admin/analytics`);
+                const data = await res.json();
+
+                document.getElementById("totalOrders").textContent =
+                    data.totalOrders;
+                document.getElementById("paidOrders").textContent =
+                    data.paidOrders;
+                document.getElementById("abandonedOrders").textContent =
+                    data.abandonedOrders;
+
+                document.getElementById("revenue").textContent =
+                    "₦" + data.totalRevenue.toLocaleString();
+
+                document.getElementById("conversionRate").textContent =
+                    data.conversionRate + "%";
+
+                const table = document.getElementById("ordersTable");
+
+                table.innerHTML = data.recentOrders
+                    .map(
+                        (order) => `
+<tr class="border-b">
+<td class="py-2">${order.orderId}</td>
+<td>${order.customer.email}</td>
+<td>
+<span class="${order.status === "paid" ? "text-green-600" : "text-yellow-600"}">
+${order.status}
+</span>
+</td>
+<td>₦${order.total.toLocaleString()}</td>
+</tr>
+`,
+                    )
+                    .join("");
+            }
+
+            loadAnalytics();
+        </script>
+    </body>
+</html>

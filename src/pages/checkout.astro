@@ -92,6 +92,33 @@ const addOns = [
   <div class="max-w-7xl mx-auto px-6 py-12">
     <h1 class="text-3xl font-bold mb-10 text-center">Service Checkout</h1>
 
+    <!-- Billing period toggle (monthly / quarterly / annually) -->
+    <div class="flex items-center justify-center mb-8">
+      <div class="inline-flex bg-gray-100 rounded-full p-1">
+        <button
+          type="button"
+          class="text-sm md:text-base period-btn px-4 md:px-8 py-2 rounded-full font-semibold bg-secondary text-white hover:cursor-pointer"
+          data-period="monthly"
+        >
+          Monthly
+        </button>
+        <button
+          type="button"
+          class="text-sm md:text-base period-btn px-4 md:px-8 py-2 rounded-full font-semibold text-gray-600 hover:cursor-pointer"
+          data-period="quarterly"
+        >
+          Quarterly
+        </button>
+        <button
+          type="button"
+          class="text-sm md:text-base period-btn px-4 md:px-8 py-2 rounded-full font-semibold text-gray-600 hover:cursor-pointer"
+          data-period="annual"
+        >
+          Annually
+        </button>
+      </div>
+    </div>
+
     <div class="grid lg:grid-cols-3 gap-10">
       <!-- LEFT COLUMN -->
       <div class="lg:col-span-2 space-y-8">
@@ -109,15 +136,22 @@ const addOns = [
                   data-name={item.name}
                 >
                   <div>
-                    <div class="flex gap-2 mb-4">
-                      <h3 class="font-bold text-md text-primary leading-tight w-1/2">
+                    <div
+                      data-quarterly="2.5"
+                      data-annually="13"
+                      class="hidden package-discount-display px-2 py-1 rounded-lg bg-green-50 text-green-500 font-bold text-xs justify-self-end"
+                    >
+                      2.5%
+                    </div>
+                    <div class="flex flex-col items-center justify-center gap-2 mb-4">
+                      <h3 class="font-bold text-lg text-center text-primary">
                         {item.name}
                       </h3>
                       <div class="flex-1">
-                        <h3 class="text-xl font-bold text-right text-secondary">
+                        <h3 class="text-xl font-bold text-center text-secondary package-price-display">
                           ₦{item.amount.toLocaleString()}
                         </h3>
-                        <p class="text-sm text-slate-600 leading-snug text-right">
+                        <p class="text-sm text-slate-600 leading-snug text-center package-period-display">
                           per month
                         </p>
                       </div>
@@ -146,6 +180,13 @@ const addOns = [
               type="text"
               id="full-name"
               placeholder="Full Name"
+              class="w-full border rounded-lg p-3"
+            />
+
+            <input
+              type="text"
+              id="company-name"
+              placeholder="Company Name"
               class="w-full border rounded-lg p-3"
             />
 
@@ -210,11 +251,21 @@ const addOns = [
 
                     <hr />
 
-                    <ul class="space-y-3 mt-4">
+                    <ul class="mt-4 space-y-2 text-sm text-gray-700">
                       {item.features.map((feature) => (
-                        <li class="flex items-start gap-3 text-sm text-slate-600 leading-snug">
-                          <span>•</span>
-                          {feature}
+                        <li class="flex items-start">
+                          <svg
+                            class="w-4 h-4 mr-2 text-green-500 shrink-0 mt-0.5"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d={item.icon}
+                              clip-rule="evenodd"
+                            />
+                          </svg>
+                          <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -224,126 +275,233 @@ const addOns = [
             }
           </div>
         </div>
-
-        <!-- What Happens After -->
-        <div class="bg-white p-6 rounded-xl shadow-sm">
-          <h2 class="text-xl font-semibold mb-4">What Happens After Payment</h2>
-
-          <ol class="space-y-3 list-decimal list-inside text-gray-700">
-            <li>
-              <strong>Confirmation email</strong> — you will receive your receipt.
-            </li>
-
-            <li>
-              <strong>Recruitment kickoff</strong> — our team contacts you within
-              24 hours.
-            </li>
-
-            <li>
-              <strong>Candidate sourcing begins</strong> immediately.
-            </li>
-          </ol>
-        </div>
       </div>
 
       <!-- RIGHT COLUMN -->
-      <div>
-        <div class="bg-white p-6 rounded-xl shadow-lg sticky top-10">
-          <h2 class="text-xl font-semibold mb-6">Order Summary</h2>
+      <div class="lg:col-span-1">
+        <div class="bg-white p-6 rounded-xl shadow-sm sticky top-24">
+          <h2 class="text-xl font-semibold mb-4">Order Summary</h2>
 
-          <div class="space-y-3 text-gray-700">
-            <div class="flex justify-between">
-              <span id="package-name"></span>
-              <span id="package-price"></span>
+          <!-- Package info -->
+          <div class="mb-4 p-4 bg-blue-50 rounded-lg">
+            <div class="flex justify-between text-sm mb-1">
+              <span class="font-semibold text-primary">Selected Plan:</span>
+              <span id="package-label">None</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="font-semibold text-primary">Plan Price:</span>
+              <span id="package-price">₦0</span>
+            </div>
+            <div class="flex justify-between text-xs text-gray-600 mt-1">
+              <span>Billing Cycle:</span>
+              <span id="billing-cycle-label">Monthly</span>
+            </div>
+          </div>
+
+          <!-- Add-ons list -->
+          <div id="addons-list" class="mb-4 space-y-2"></div>
+
+          <hr class="my-4" />
+
+          <div class="space-y-2">
+            <div class="flex justify-between text-sm">
+              <span>Subtotal:</span>
+              <span id="subtotal">₦0</span>
             </div>
 
-            <div id="addons-list"></div>
-
-            <hr />
-
-            <div class="flex justify-between">
-              <span>Subtotal</span>
-              <span id="subtotal"></span>
+            <div class="flex justify-between text-sm">
+              <span>VAT (7.5%):</span>
+              <span id="vat">₦0</span>
             </div>
 
-            <div class="flex justify-between">
-              <span>VAT (7.5%)</span>
-              <span id="vat"></span>
-            </div>
+            <hr class="my-2" />
 
-            <div class="flex justify-between font-bold text-lg">
-              <span>Total</span>
-              <span id="total"></span>
+            <div class="flex justify-between text-lg font-bold">
+              <span>Total:</span>
+              <span id="total">₦0</span>
             </div>
           </div>
 
           <div
             id="payment-error"
-            class="hidden mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded text-sm"
+            class="hidden mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm"
           >
           </div>
 
           <button
             id="proceed-btn"
-            class="mt-6 w-full bg-secondary hover:bg-secondary/50 hover:cursor-pointer text-black py-3 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            class="w-full mt-6 bg-primary text-white font-semibold py-3 rounded-lg shadow hover:bg-primary/90 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             <span id="btn-text">Proceed to Payment</span>
-            <div
+            <svg
               id="btn-spinner"
-              class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"
+              class="hidden animate-spin h-5 w-5 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
             >
-            </div>
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"></circle>
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
           </button>
-
-          <p class="text-sm text-gray-500 mt-4 text-center">
-            Secure payment powered by Flutterwave
-          </p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- JS Price Calculator -->
-
   <script>
-    const addonCards = document.querySelectorAll(".addon-card");
-    const subtotalEl = document.getElementById("subtotal");
-    const vatEl = document.getElementById("vat");
-    const totalEl = document.getElementById("total");
-    const addonsList = document.getElementById("addons-list");
-    const packageNameEl = document.getElementById("package-name");
-    const packagePriceEl = document.getElementById("package-price");
-    const packageCards = document.querySelectorAll(".package-card");
+    const packageCards: NodeListOf<HTMLElement> =
+      document.querySelectorAll(".package-card");
+    const addonCards: NodeListOf<HTMLElement> =
+      document.querySelectorAll(".addon-card");
+    const periodBtns: NodeListOf<HTMLButtonElement> =
+      document.querySelectorAll(".period-btn");
 
-    // Dynamic Plan from URL (Client-side)
+    const packageLabelEl: HTMLElement =
+      document.getElementById("package-label");
+    const packagePriceEl: HTMLElement =
+      document.getElementById("package-price");
+    const billingCycleLabelEl: HTMLElement = document.getElementById(
+      "billing-cycle-label",
+    );
+    const addonsList: HTMLElement = document.getElementById("addons-list");
+    const subtotalEl: HTMLElement = document.getElementById("subtotal");
+    const vatEl: HTMLElement = document.getElementById("vat");
+    const totalEl: HTMLElement = document.getElementById("total");
+
+    let currentPeriod = "monthly";
+    let currentPackageId = null;
     let currentPackagePrice = 0;
     let currentPackageName = "";
-    let currentPackageId = "";
-    let selectedAddons = [];
+    let selectedAddons: Array<{ index: string; name: string; price: number }> =
+      [];
+
+    // Period multiplier helper
+    function periodMultiplier(): number {
+      if (currentPeriod === "quarterly") return 3;
+      if (currentPeriod === "annual") return 12;
+      return 1;
+    }
+
+    // Get billing cycle label
+    function getBillingCycleLabel(): string {
+      if (currentPeriod === "quarterly") return "Quarterly";
+      if (currentPeriod === "annual") return "Annually";
+      return "Monthly";
+    }
+
+    // Update package card prices based on current period
+    function updatePackageCardPrices() {
+      const multiplier = periodMultiplier();
+
+      packageCards.forEach((card: HTMLElement) => {
+        const basePrice = parseInt(card.dataset.price);
+        let displayedPrice = basePrice * multiplier;
+
+        const priceDisplay = card.querySelector(".package-price-display");
+        const periodDisplay = card.querySelector(".package-period-display");
+        const discountDisplay: HTMLElement = card.querySelector(
+          ".package-discount-display",
+        );
+        const discountQuarterly = Number(discountDisplay.dataset.quarterly);
+        const discountAnnually = Number(discountDisplay.dataset.annually);
+
+        if (discountDisplay) {
+          if (currentPeriod === "quarterly") {
+            discountDisplay.classList.remove("hidden");
+            discountDisplay.textContent = `Save ${discountQuarterly}%`;
+            displayedPrice =
+              displayedPrice - (displayedPrice * discountQuarterly) / 100;
+          } else if (currentPeriod === "annual") {
+            discountDisplay.classList.remove("hidden");
+            discountDisplay.textContent = `Save ${discountAnnually}%`;
+            displayedPrice =
+              displayedPrice - (displayedPrice * discountAnnually) / 100;
+          } else {
+            discountDisplay.classList.add("hidden");
+          }
+        }
+
+        if (priceDisplay) {
+          priceDisplay.textContent = "₦" + displayedPrice.toLocaleString();
+        }
+
+        if (periodDisplay) {
+          if (currentPeriod === "quarterly") {
+            periodDisplay.textContent = "per quarter";
+          } else if (currentPeriod === "annual") {
+            periodDisplay.textContent = "per year";
+          } else {
+            periodDisplay.textContent = "per month";
+          }
+        }
+      });
+    }
+
+    // Period toggle logic
+    periodBtns.forEach((btn: HTMLButtonElement) => {
+      btn.addEventListener("click", () => {
+        const period = btn.dataset.period;
+        if (period === currentPeriod) return;
+
+        currentPeriod = period;
+
+        // Update button styles
+        periodBtns.forEach((b) => {
+          b.classList.remove("bg-secondary", "text-white");
+          b.classList.add("text-gray-600");
+        });
+        btn.classList.add("bg-secondary", "text-white");
+        btn.classList.remove("text-gray-600");
+
+        // Update package card prices
+        updatePackageCardPrices();
+
+        // Update the order summary with new period
+        updateTotal();
+      });
+    });
 
     function initPlanFromUrl() {
       const urlParams = new URLSearchParams(window.location.search);
       const planKey = urlParams.get("plan")?.toLowerCase();
-      // console.log("planKey:", planKey);
 
-      packageCards.forEach((card: HTMLElement) => {
-        if (card.dataset.index === planKey) {
-          currentPackageId = card.dataset.index;
-          currentPackageName = card.dataset.name;
-          currentPackagePrice = parseInt(card.dataset.price);
+      if (planKey) {
+        const matchedCard = Array.from(packageCards).find(
+          (card) => card.dataset.index === planKey,
+        );
 
-          if (packageNameEl) packageNameEl.textContent = currentPackageName;
-          if (packagePriceEl)
-            packagePriceEl.textContent =
-              "₦" + currentPackagePrice.toLocaleString();
+        if (matchedCard) {
+          currentPackageId = planKey;
+          currentPackagePrice = parseInt(matchedCard.dataset.price);
+          currentPackageName = matchedCard.dataset.name;
+
+          if (packageLabelEl) packageLabelEl.textContent = currentPackageName;
+
+          updateTotal();
         }
-      });
-
-      updateTotal();
+      }
     }
 
     function updateTotal() {
       let addonsTotal = 0;
+      const discountDisplay: HTMLElement = document.querySelector(
+        ".package-discount-display",
+      );
+      const discountQuarterly = Number(discountDisplay.dataset.quarterly);
+      const discountAnnually = Number(discountDisplay.dataset.annually);
+
+      // Clear existing add-ons list
       if (addonsList) addonsList.innerHTML = "";
 
       selectedAddons.forEach((addon) => {
@@ -359,7 +517,17 @@ const addOns = [
         }
       });
 
-      const subtotal = currentPackagePrice + addonsTotal;
+      const multiplier = periodMultiplier();
+      const packageCost = currentPackagePrice * multiplier;
+      const discountedPackageCost =
+        packageCost -
+        (packageCost *
+          (currentPeriod === "quarterly"
+            ? discountQuarterly
+            : discountAnnually)) /
+          100;
+      // Apply multiplier only to the package price (add-ons remain per their price)
+      const subtotal = (currentPeriod === "monthly" ? packageCost : discountedPackageCost) + addonsTotal;
       const vat = subtotal * 0.075;
       const total = subtotal + vat;
 
@@ -367,13 +535,29 @@ const addOns = [
       if (vatEl) vatEl.textContent = "₦" + vat.toLocaleString();
       if (totalEl) totalEl.textContent = "₦" + total.toLocaleString();
 
-      return total;
+      // Update displayed package price to reflect selected period
+      if (packagePriceEl && currentPackagePrice) {
+        if(currentPeriod === "monthly") {
+          packagePriceEl.textContent =
+          "₦" + packageCost.toLocaleString();
+        } else {
+          packagePriceEl.textContent =
+          "₦" + discountedPackageCost.toLocaleString();
+        }
+      }
+
+      // Update billing cycle label
+      if (billingCycleLabelEl) {
+        billingCycleLabelEl.textContent = getBillingCycleLabel();
+      }
     }
 
     packageCards.forEach((card: HTMLElement) => {
       const urlParams = new URLSearchParams(window.location.search);
       const planKey = urlParams.get("plan")?.toLowerCase();
-      const selectBtn: HTMLButtonElement = card.querySelector(".select-package-btn");
+      const selectBtn: HTMLButtonElement = card.querySelector(
+        ".select-package-btn",
+      );
 
       selectBtn.addEventListener("click", () => {
         window.location.href = `/checkout?plan=${card.dataset.index}`;
@@ -398,8 +582,10 @@ const addOns = [
 
     // Add-on selection logic
     addonCards.forEach((card: HTMLElement) => {
-      const selectBtn: HTMLButtonElement = card.querySelector(".select-addon-btn");
-      const removeBtn: HTMLButtonElement = card.querySelector(".remove-addon-btn");
+      const selectBtn: HTMLButtonElement =
+        card.querySelector(".select-addon-btn");
+      const removeBtn: HTMLButtonElement =
+        card.querySelector(".remove-addon-btn");
       const price = parseInt(card.dataset.price);
       const name = card.dataset.name;
       const index = card.dataset.index;
@@ -458,16 +644,35 @@ const addOns = [
       });
     });
 
+    // Initialize package card prices on page load
+    updatePackageCardPrices();
     initPlanFromUrl();
 
     // Validation on Proceed to Payment
-    const proceedBtn: HTMLButtonElement = document.getElementById("proceed-btn") as HTMLButtonElement;
-    const btnText: HTMLElement = document.getElementById("btn-text") as HTMLElement;
-    const btnSpinner: HTMLElement = document.getElementById("btn-spinner") as HTMLElement;
-    const paymentError: HTMLElement = document.getElementById("payment-error") as HTMLElement;
-    const fullNameInput: HTMLInputElement = document.getElementById("full-name") as HTMLInputElement;
-    const emailInput: HTMLInputElement = document.getElementById("email") as HTMLInputElement;
-    const phoneInput: HTMLInputElement = document.getElementById("phone") as HTMLInputElement;
+    const proceedBtn: HTMLButtonElement = document.getElementById(
+      "proceed-btn",
+    ) as HTMLButtonElement;
+    const btnText: HTMLElement = document.getElementById(
+      "btn-text",
+    ) as HTMLElement;
+    const btnSpinner: HTMLElement = document.getElementById(
+      "btn-spinner",
+    ) as HTMLElement;
+    const paymentError: HTMLElement = document.getElementById(
+      "payment-error",
+    ) as HTMLElement;
+    const fullNameInput: HTMLInputElement = document.getElementById(
+      "full-name",
+    ) as HTMLInputElement;
+    const companyNameInput: HTMLInputElement = document.getElementById(
+      "company-name",
+    ) as HTMLInputElement;
+    const emailInput: HTMLInputElement = document.getElementById(
+      "email",
+    ) as HTMLInputElement;
+    const phoneInput: HTMLInputElement = document.getElementById(
+      "phone",
+    ) as HTMLInputElement;
 
     function showError(msg) {
       if (paymentError) {
@@ -500,12 +705,13 @@ const addOns = [
         hideError();
 
         const name = fullNameInput?.value.trim() || "";
+        const companyName = companyNameInput?.value.trim() || "";
         const email = emailInput?.value.trim() || "";
         const phone = phoneInput?.value.trim() || "";
 
         // Basic validation
         if (!name || !email || !phone) {
-          showError("Please fill in all fields.");
+          showError("Please fill in your contact information.");
           return;
         }
 
@@ -520,9 +726,11 @@ const addOns = [
 
         const payment_data = {
           name: name,
+          companyName: companyName,
           email: email,
           phone: phone,
           packageId: currentPackageId,
+          period: currentPeriod,
           addOnIds: selectedAddons.map((a) => a.index), // or a.id if available
         };
 

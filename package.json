@@ -10,7 +10,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/netlify": "^7.0.4",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.0.8",
     "astro-icon": "^1.1.5",
